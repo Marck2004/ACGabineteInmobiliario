@@ -21,8 +21,12 @@ import IconoLandig from "../assets/svg/IconoLandig.astro";
       </div>
       <div class="w-full flex-grow lg:!flex justify-end lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
         <ul class="list-reset lg:flex justify-end flex-1 items-center gap-4">
-          <li class="mr-3">
-            <a class="flex gap-2 py-2 px-4 text-black hover:font-bold no-underline transition-all duration-200 " href="#">Inmuebles <AngleDown/></a>
+          <li id="nav-child" class="group mr-3">
+            <a class="flex gap-2 py-2 px-4 text-black hover:font-bold no-underline transition-all duration-200" href="#">Inmuebles <AngleDown/></a>
+            <ul id="nav-hover" class="group-hover:block hidden shadow-lg lg:absolute bg-white gray-700 lg:rounded-2xl w-[12%] items-center">
+              <li class="hover:bg-gray-100 cursor-pointer pr-4 pb-2 pt-2 pl-2 hover:font-bold no-underline transition-all duration-200"><a class="w-full">Últimos inmuebles</a></li>
+              <li class="hover:bg-gray-100 cursor-pointer pr-4 pb-2 pt-2 pl-2 hover:font-bold no-underline transition-all duration-200"><a>Ventas</a></li>
+            </ul>
           </li>
           <li class="mr-3">
             <a class="flex gap-4 py-2 px-4 text-black no-underline hover:font-bold transition-all duration-200" href="#">Secciones <AngleDown/></a>
@@ -40,14 +44,20 @@ import IconoLandig from "../assets/svg/IconoLandig.astro";
   </nav>
 
   <script>
-    
-    document.getElementById("nav-toggle")!.addEventListener("click", function() {
-      let navContent = document.getElementById("nav-content");
+    // document.getElementById("nav-child")!.addEventListener("mouseover", function() {
+    //   document.getElementById("nav-hover")!.style.display = "block";
+    // })
+    // document.getElementById("nav-child")!.addEventListener("mouseleave", function() {
+    //   document.getElementById("nav-hover")!.style.display = "none";
+    // })
 
-      if (navContent!.style.display === "none" || navContent!.style.display === "") {
-      navContent!.style.display = "flex"; // Mostrar el menú
-    } else if (navContent!.style.display === "flex"){
-      navContent!.style.display = "none"; // Ocultar el menú
-    }
-    })
+    // document.getElementById("nav-toggle")!.addEventListener("click", function() {
+    //   let navContent = document.getElementById("nav-content");
+
+    //   if (navContent!.style.display === "none" || navContent!.style.display === "") {
+    //   navContent!.style.display = "flex"; // Mostrar el menú
+    // } else if (navContent!.style.display === "flex"){
+    //   navContent!.style.display = "none"; // Ocultar el menú
+    // }
+    // })
   </script>
