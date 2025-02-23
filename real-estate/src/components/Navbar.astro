@@ -2,9 +2,10 @@
 
 import AngleDown from "../assets/svg/Angle-down.astro";
 import IconoLandig from "../assets/svg/IconoLandig.astro";
+import NavChilds from "./NavChilds.astro";
 ---
 
-<nav id="header" class="fixed w-full z-30 text-white">
+<nav id="header" class="sticky w-full z-30 text-white bg-white fixed-top ">
     <div class="w-full justify-between container mx-auto flex flex-wrap items-center mt-0 pt-2 pb-4">
       <div class="flex items-center pl-4">
         <a class="toggleColour w-2xs flex justify-end text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
@@ -21,15 +22,13 @@ import IconoLandig from "../assets/svg/IconoLandig.astro";
       </div>
       <div class="w-full flex-grow lg:!flex justify-end lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
         <ul class="list-reset lg:flex justify-end flex-1 items-center gap-4">
-          <li id="nav-child" class="group mr-3">
+          <li class="group mr-3 max-lg:flex">
             <a class="flex gap-2 py-2 px-4 text-black hover:font-bold no-underline transition-all duration-200" href="#">Inmuebles <AngleDown/></a>
-            <ul id="nav-hover" class="group-hover:block hidden shadow-lg lg:absolute bg-white gray-700 lg:rounded-2xl w-[12%] items-center">
-              <li class="hover:bg-gray-100 cursor-pointer pr-4 pb-2 pt-2 pl-2 hover:font-bold no-underline transition-all duration-200"><a class="w-full">Últimos inmuebles</a></li>
-              <li class="hover:bg-gray-100 cursor-pointer pr-4 pb-2 pt-2 pl-2 hover:font-bold no-underline transition-all duration-200"><a>Ventas</a></li>
-            </ul>
+            <NavChilds childs={["Últimos inmuebles", "Ventas"]}/>
           </li>
-          <li class="mr-3">
+          <li class="group mr-3 max-lg:flex">
             <a class="flex gap-4 py-2 px-4 text-black no-underline hover:font-bold transition-all duration-200" href="#">Secciones <AngleDown/></a>
+            <NavChilds childs={["Blog", "Presentación de servicios"]}/>
           </li>
           <li class="mr-3">
             <a class="inline-block py-2 px-4 text-black no-underline hover:text-gray-800 hover:font-bold transition-all duration-200" href="#">Valora tu inmueble</a>
@@ -44,20 +43,13 @@ import IconoLandig from "../assets/svg/IconoLandig.astro";
   </nav>
 
   <script>
-    // document.getElementById("nav-child")!.addEventListener("mouseover", function() {
-    //   document.getElementById("nav-hover")!.style.display = "block";
-    // })
-    // document.getElementById("nav-child")!.addEventListener("mouseleave", function() {
-    //   document.getElementById("nav-hover")!.style.display = "none";
-    // })
+    document.getElementById("nav-toggle")!.addEventListener("click", function() {
+      let navContent = document.getElementById("nav-content");
 
-    // document.getElementById("nav-toggle")!.addEventListener("click", function() {
-    //   let navContent = document.getElementById("nav-content");
-
-    //   if (navContent!.style.display === "none" || navContent!.style.display === "") {
-    //   navContent!.style.display = "flex"; // Mostrar el menú
-    // } else if (navContent!.style.display === "flex"){
-    //   navContent!.style.display = "none"; // Ocultar el menú
-    // }
-    // })
+      if (navContent!.style.display === "none" || navContent!.style.display === "") {
+      navContent!.style.display = "flex";
+    } else if (navContent!.style.display === "flex"){
+      navContent!.style.display = "none";
+    }
+    })
   </script>

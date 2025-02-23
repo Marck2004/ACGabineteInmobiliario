@@ -1,11 +1,26 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import bgImg from '../assets/logo-landing.webp';
 ---
-
+<!-- 
+¿Sueñas con un hogar? Nosotros te lo ofrecemos
+Ac Gabinete Inmobiliario. Expertos en la gestión de la compra-venta y alquiler de inmuebles -->
 <Layout>
-	<Welcome />
+		<div class="container w-full px-3 mx-auto grid grid-cols-2 items-center">
+			<img src={bgImg.src} class="absolute top-0 left-0 w-full h-full object-cover opacity-30 " />
+			<div class="absolute inset-0 bg-black/40 rounded-lg"></div>
+			<!--Left Col-->
+		  <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+			<h1 class="my-4 text-5xl font-bold leading-tight">
+				¿Sueñas con un hogar? Nosotros te lo ofrecemos
+			</h1>
+			<p class="leading-normal text-2xl mb-8">
+				Ac Gabinete Inmobiliario. Expertos en la gestión de la compra-venta y alquiler de inmuebles
+			</p>
+		  </div>
+		  <!--Right Col-->
+		  <div class="w-full md:w-3/5 py-6 text-center">
+			<img class="w-full md:w-4/5 z-50" src="../assets/svg/Chart.webp" />
+		  </div>
+		</div>
 </Layout>
