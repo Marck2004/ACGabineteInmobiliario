@@ -1,25 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import bgImg from "../assets/logo-landing.webp";
+import Phone from "../assets/svg/Phone.astro";
+import MembersCard from "../components/MembersCard.astro";
 ---
 
 <style>
 	button, input{
 		padding: 2%;
 	}
-	
 </style>
-<Layout>
-  <div class="container w-full m-auto items-center">
 
-    <div class="relative w-full h-full">
-      <img src={bgImg.src} class="w-full h-full object-cover opacity-30 p-6" />
+<Layout>
+<div class="mb-0 relative">
+  <div class="container m-auto items-center">
+    <div class="relative bg-white ">
+      <img src={bgImg.src} class="w-full h-full object-cover opacity-30 p-6"/>
       <div class="grid grid-cols-2 items-center absolute inset-0 bg-black/60 rounded-lg">
 	  <div class="flex flex-col w-full justify-center items-center text-center md:text-left">
-		<h1 class="my-4 text-5xl font-bold leading-tight text-center text-white">
+		<h1 class="my-4 max-lg:text-3xl text-5xl font-bold leading-tight text-center text-white">
 		  ¿Sueñas con un hogar? Nosotros te lo ofrecemos
 		</h1>
-		<p class="leading-normal text-2xl mb-8 text-center w-1/2 text-white">
+		<p class="leading-normal text-2xl mb-8 lg:text-center max-lg:hidden max-xl:w-full w-1/2 text-white">
 		  Ac Gabinete Inmobiliario. Expertos en la gestión de la compra-venta y alquiler de inmuebles
 		</p>
 	  </div>
@@ -40,5 +42,15 @@ import bgImg from "../assets/logo-landing.webp";
 		</div>
     </div>
 	</div>
+  </div>
+  <div class="bg-white mb-0 text-center text-3xl p-5">
+	<h2>
+		Nuestro equipo
+	</h2>
+	<div class="grid relative justify-center">
+		<MembersCard Name="Cristina Maestro García" PhoneNumber="662547370"/>
+		<MembersCard Name="Alfredo Ocaña Touset" PhoneNumber="662549948"/>
+	</div>
+  </div>
 </div>
 </Layout>

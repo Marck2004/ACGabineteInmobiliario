@@ -1,0 +1,12 @@
+---
+import Phone from "../assets/svg/Phone.astro";
+const { Name, PhoneNumber } = Astro.props;
+---
+
+<div class="w-3xs bg-white rounded-2xl">
+    <img src="../assets/Cristina.webp" alt="Img empleada" class="rounded-3xl">
+    <span>{Name}</span>
+    <span class="inline-flex gap-3">
+        <Phone />{PhoneNumber}
+    </span>
+</div>

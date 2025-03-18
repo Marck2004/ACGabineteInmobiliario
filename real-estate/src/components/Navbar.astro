@@ -3,12 +3,15 @@
 import AngleDown from "../assets/svg/Angle-down.astro";
 import IconoLandig from "../assets/svg/IconoLandig.astro";
 import NavChilds from "./NavChilds.astro";
+
+const inmueblesList = ["Últimos inmuebles", "Ventas"];
+const seccionesList = ["Blog", "Presentación de servicios"]
 ---
 
 <nav id="header" class="sticky w-full z-30 text-white bg-white fixed-top ">
     <div class="w-full justify-between container mx-auto flex flex-wrap items-center mt-0 pt-2 pb-4">
-      <div class="flex items-center pl-4">
-        <a class="toggleColour w-2xs flex justify-end text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+      <div>
+        <a class="toggleColour w-2xs flex justify-center text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
           <IconoLandig />
         </a>
       </div>
@@ -24,11 +27,11 @@ import NavChilds from "./NavChilds.astro";
         <ul class="list-reset lg:flex justify-end flex-1 items-center gap-4">
           <li class="group mr-3 max-lg:flex">
             <a class="flex gap-2 py-2 px-4 text-black hover:font-bold no-underline transition-all duration-200" href="#">Inmuebles <AngleDown/></a>
-            <NavChilds childs={["Últimos inmuebles", "Ventas"]}/>
+            <NavChilds childs={inmueblesList}/>
           </li>
           <li class="group mr-3 max-lg:flex">
             <a class="flex gap-4 py-2 px-4 text-black no-underline hover:font-bold transition-all duration-200" href="#">Secciones <AngleDown/></a>
-            <NavChilds childs={["Blog", "Presentación de servicios"]}/>
+            <NavChilds childs={seccionesList}/>
           </li>
           <li class="mr-3">
             <a class="inline-block py-2 px-4 text-black no-underline hover:text-gray-800 hover:font-bold transition-all duration-200" href="#">Valora tu inmueble</a>
