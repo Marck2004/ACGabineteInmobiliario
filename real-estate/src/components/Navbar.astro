@@ -1,11 +1,9 @@
 ---
-
-import AngleDown from "../assets/svg/Angle-down.astro";
-import IconoLandig from "../assets/svg/IconoLandig.astro";
+import AngleDown from "@/assets/svg/Angle-down.astro";
+import IconoLandig from "@/assets/svg/IconoLandig.astro";
 import NavChilds from "./NavChilds.astro";
-
-const inmueblesList = ["Últimos inmuebles", "Ventas"];
-const seccionesList = ["Blog", "Presentación de servicios"]
+import { inmueblesList } from "@/consts/NavConsts";
+import { seccionesList } from "@/consts/NavConsts";
 ---
 
 <nav id="header" class="sticky w-full z-30 text-white bg-white fixed-top ">

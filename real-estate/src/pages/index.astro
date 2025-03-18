@@ -1,8 +1,8 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import bgImg from "../assets/logo-landing.webp";
-import Phone from "../assets/svg/Phone.astro";
-import MembersCard from "../components/MembersCard.astro";
+import Layout from "@/layouts/Layout.astro";
+import bgImg from "@/assets/logo-landing.webp";
+import MembersCard from "@/components/MembersCard.astro";
+
 ---
 
 <style>
@@ -43,13 +43,14 @@ import MembersCard from "../components/MembersCard.astro";
     </div>
 	</div>
   </div>
-  <div class="bg-white mb-0 text-center text-3xl p-5">
-	<h2>
+  <div class="mb-0 text-center text-3xl p-5">
+	<h2 class="text-center !text-3xl !text-slate-800 tokyo__text-border tokyo__text-border--black !mb-10">
 		Nuestro equipo
+			<hr class="border-t-2 border-black w-1/2 mb-2 m-auto mt-4">
+			<hr class="border-t-2 border-black w-1/2  m-auto">
 	</h2>
-	<div class="grid relative justify-center">
-		<MembersCard Name="Cristina Maestro García" PhoneNumber="662547370"/>
-		<MembersCard Name="Alfredo Ocaña Touset" PhoneNumber="662549948"/>
+	<div class="flex relative flex-wrap justify-center gap-10">
+		<MembersCard />
 	</div>
   </div>
 </div>
