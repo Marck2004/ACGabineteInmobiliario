@@ -7,14 +7,11 @@ export default {
 				sans: ["Montserrat", "sans-serif"],
 				serif: ["Lora", "serif"],
 			},
+			colors: {
+				customGray: '#f1f3f6',
+				brand: '#c22a24'
+			}
 		},
 	},
 	plugins: [typography],
-	theme: {
-		extend: {
-		  colors: {
-			customGray: '#f1f3f6', // Agregar tu color hexadecimal como un nombre personalizado
-		  },
-		},
-	  },
 };
