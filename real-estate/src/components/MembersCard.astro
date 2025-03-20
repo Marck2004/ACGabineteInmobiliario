@@ -1,15 +1,22 @@
 ---
 import Phone from "@/assets/svg/Phone.astro";
-import type { EmployerType } from "@/interfaces/EmployerInterface"
-import { employers } from "@/consts/Employers"
+import type { EmployerType } from "@/interfaces/EmployerInterface";
+import { employers } from "@/consts/Employers";
 ---
 
-{employers.map((employer : EmployerType) => (
-    <div class="w-3xs bg-white rounded-2xl p-3 ">
-        <img src={employer.Img} alt="Img empleada" class="rounded-full border-4 border-[#c22a24] w-44 h-44 object-cover m-auto">
-        <span class="text-[#c22a24]">{employer.Name}</span>
-        <span class="inline-flex gap-3">
-            <Phone />{employer.Phone}
-        </span>
-    </div>
-))}
+{
+    employers.map((employer: EmployerType) => (
+        <div class="w-3xs bg-white rounded-2xl p-3 ">
+            <img
+                src={employer.Img}
+                alt="Img empleada"
+                class="rounded-full border-4 border-[#c22a24] w-44 h-44 object-cover m-auto"
+            />
+            <span class="text-[#c22a24]">{employer.Name}</span>
+            <span class="inline-flex gap-3">
+                <Phone />
+                {employer.Phone}
+            </span>
+        </div>
+    ))
+}
