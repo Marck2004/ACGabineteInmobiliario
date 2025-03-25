@@ -2,6 +2,8 @@
 import Layout from "@/layouts/Layout.astro";
 import bgImg from "@/assets/logo-landing.webp";
 import MembersCard from "@/components/MembersCard.astro";
+import { getCollection } from "astro:content";
+const properties = await getCollection("properties");
 ---
 
 <style>
