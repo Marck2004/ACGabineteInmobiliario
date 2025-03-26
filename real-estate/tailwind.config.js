@@ -1,13 +1,9 @@
-module.exports = {
+export default {
 	content: [
 		// Asegúrate de incluir todas las rutas de tus archivos
 		"./src/**/*.{html,js,ts,jsx,tsx,md}",
 	  ],
-	daisyui:{
-		themes: false, // Desactiva los temas globales de daisyUI
-		styled: false, // Desactiva los estilos predeterminados
-		base: false, // Desactiva los estilos base
-	},
+	  plugins: [require("@tailwindcss/typography")],
 	theme: {
 		extend: {
 			fontFamily: {
@@ -19,6 +15,5 @@ module.exports = {
 				brand: '#c22a24'
 			}
 		},
-	},
-	plugins: [require("@tailwindcss/typography"), require("daisyui")],
+	}
 };

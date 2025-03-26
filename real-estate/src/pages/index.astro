@@ -3,7 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import bgImg from "@/assets/logo-landing.webp";
 import MembersCard from "@/components/MembersCard.astro";
 import { getCollection } from "astro:content";
-const properties = await getCollection("properties");
+import PropertiesCarousel from "@/components/PropertiesCarousel.astro";
 ---
 
 <style>
@@ -14,7 +14,10 @@ const properties = await getCollection("properties");
 </style>
 
 <Layout>
-	<div class="mb-0 relative">
+	<div
+		class="mb-0 relative bg-[url(@/assets/bgImage.jpg)] before:bg-[#f1f3f6] before:left-0 before:absolute before:h-full before:w-full
+		before:opacity-82"
+	>
 		<div class="container m-auto items-center">
 			<div class="relative bg-white">
 				<img
@@ -53,12 +56,16 @@ const properties = await getCollection("properties");
 									type="button">Venta</button
 								>
 								<select
-									class="focus:border-red-600 focus:text-red-600 bg-white order-last w-[25%] font-bold border-2 rounded-md"
+									class="group focus:border-red-600 focus:text-red-600 bg-white order-last w-[25%] font-bold border-2 rounded-md"
 								>
-									<option value="Alojamiento"
+									<option
+										value="Alojamiento"
+										class="group-focus:text-black"
 										>Alojamiento</option
 									>
-									<option value="Industrial"
+									<option
+										value="Industrial"
+										class="group-focus:text-black"
 										>Industrial</option
 									>
 								</select>
@@ -81,7 +88,8 @@ const properties = await getCollection("properties");
 				</div>
 			</div>
 		</div>
-		<div class="mb-0 text-center text-3xl p-5">
+		<!-- <PropertiesCarousel /> -->
+		<div class="mb-0 text-center text-3xl p-5 relative">
 			<h2
 				class="text-center !text-3xl !text-slate-800 tokyo__text-border tokyo__text-border--black !mb-10"
 			>
