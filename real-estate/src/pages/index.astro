@@ -4,6 +4,7 @@ import bgImg from "@/assets/logo-landing.webp";
 import MembersCard from "@/components/MembersCard.astro";
 import { getCollection } from "astro:content";
 import PropertiesCarousel from "@/components/PropertiesCarousel.astro";
+import SectionTitle from "@/components/SectionTitle.astro";
 ---
 
 <style>
@@ -18,7 +19,7 @@ import PropertiesCarousel from "@/components/PropertiesCarousel.astro";
 		class="mb-0 relative bg-[url(@/assets/bgImage.jpg)] before:bg-[#f1f3f6] before:left-0 before:absolute before:h-full before:w-full
 		before:opacity-82"
 	>
-		<div class="container m-auto items-center">
+		<div class="container m-auto items-center pt-10">
 			<div class="relative bg-white">
 				<img
 					src={bgImg.src}
@@ -52,11 +53,11 @@ import PropertiesCarousel from "@/components/PropertiesCarousel.astro";
 						>
 							<div class="flex justify-between gap-5">
 								<button
-									class="focus:border-red-600 focus:text-red-600 bg-white order-first text-ellipsis w-[25%] font-bold border-2 rounded-md"
+									class="focus:border-[#c22a24] focus:text-[#c22a24] bg-white order-first text-ellipsis w-[25%] font-bold border-2 rounded-md"
 									type="button">Venta</button
 								>
 								<select
-									class="group focus:border-red-600 focus:text-red-600 bg-white order-last w-[25%] font-bold border-2 rounded-md"
+									class="group focus:border-[#c22a24] focus:text-[#c22a24] bg-white order-last w-[25%] font-bold border-2 rounded-md"
 								>
 									<option
 										value="Alojamiento"
@@ -88,15 +89,9 @@ import PropertiesCarousel from "@/components/PropertiesCarousel.astro";
 				</div>
 			</div>
 		</div>
-		<!-- <PropertiesCarousel /> -->
+		<PropertiesCarousel />
 		<div class="mb-0 text-center text-3xl p-5 relative">
-			<h2
-				class="text-center !text-3xl !text-slate-800 tokyo__text-border tokyo__text-border--black !mb-10"
-			>
-				Nuestro equipo
-				<hr class="border-t-2 border-black w-1/2 mb-2 m-auto mt-4" />
-				<hr class="border-t-2 border-black w-1/2 m-auto" />
-			</h2>
+			<SectionTitle Children="Nuestro equipo" />
 			<div class="flex relative flex-wrap justify-center gap-10">
 				<MembersCard />
 			</div>

@@ -24,7 +24,8 @@ bedrooms: 4
 bathrooms: 4
 address: "Calle Colombia, Valdemoro"
 videos:
-images:
+images: 
+    -   "/ImgProperties/Calle-Colombia-Valdemoro/FirstImg.jpg"
 features: 
     extras:
     -   "Garaje individual"
@@ -39,11 +40,12 @@ features:
     -   "Piscina"
     -   "Porche"
     -   "Ventanas climalit"
-    price: 1795.45
+    pricePerMeter: 1795.45
     usableArea: 190 
     plotArea: 200 
     floors: 3
     constructionYear: 2002
+    totalPrice: "395.000"
 energeticCertification:
     consumption: "En trámite"
     co2Emissions: "En trámite"

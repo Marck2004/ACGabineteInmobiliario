@@ -1,5 +1,13 @@
 @import "tailwindcss";
-
+@tailwind utilities;
+@plugin "daisyui" {
+    themes: none;
+    root: ":root";
+    include: ;
+    exclude: ;
+    prefix: ;
+    logs: true;
+}
 
 @font-face {
     font-family: "Montserrat";
@@ -17,9 +25,8 @@ p {
     font-family: "Lora";
 }
 
-html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+html,body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}

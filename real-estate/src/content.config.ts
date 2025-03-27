@@ -11,14 +11,15 @@ const properties = defineCollection({
         bathrooms: z.number(),
         address: z.string(),
         videos: z.array(z.string()).nullable(),
-        images: z.array(z.string()).nullable(),
+        images: z.array(z.string()),
         features: z.object({
             extras: z.array(z.string()),
-            price: z.number(),
+            pricePerMeter: z.number(),
             usableArea: z.number(),
             plotArea: z.number(),
             floors: z.number(),
-            constructionYear: z.number()
+            constructionYear: z.number(),
+            totalPrice: z.string()
         }),
         energeticCertification: z.object({
             consumption: z.string(),
