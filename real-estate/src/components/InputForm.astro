@@ -1,5 +1,5 @@
 ---
-const { labelName, important = true } = Astro.props;
+const { labelName, important } = Astro.props;
 ---
 
 <div class="pb-5">
@@ -12,6 +12,7 @@ const { labelName, important = true } = Astro.props;
             name={labelName}
             class="border p-2 w-full border-[#D4D9DC] rounded-xl shadow-inner"
             placeholder={labelName}
+            required={important ? true : false}
         />
     </label>
 </div>

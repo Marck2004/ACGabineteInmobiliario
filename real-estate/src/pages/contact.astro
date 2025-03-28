@@ -1,19 +1,36 @@
 ---
+import Phone from "@/assets/svg/Phone.astro";
+import Location from "@/assets/svg/Location.astro";
+import Email from "@/assets/svg/Email.astro";
 import CheckboxForm from "@/components/CheckboxForm.astro";
 import InputForm from "@/components/InputForm.astro";
 import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout>
-    <div class="container flex flex-row mx-auto p-10">
+    <div class="container flex flex-row mx-auto p-8">
         <div class="w-full">
-            <h1 class="text-4xl font-semibold">Contacta con nosotros</h1>
+            <h1 class="text-4xl font-semibold mb-7">Contacta con nosotros</h1>
+            <div class="w-1/2 bg-gray-100 p-10 rounded-2xl shadow-2xl">
+                <p class="text-xl font-bold text-slate-600">
+                    Donde encontrarnos
+                </p>
+                <div class="grid-rows-3 text-slate-600 mt-5">
+                    <p class="flex gap-4"><Phone /> 662547370</p>
+                    <p class="flex gap-4">
+                        <Email /> info@gabineteinmobiliario.com
+                    </p>
+                    <p class="flex gap-2">
+                        <Location /> Calle Orquídea, 61, Illescas, España
+                    </p>
+                </div>
+            </div>
         </div>
         <div class="w-full">
             <form method="post">
-                <InputForm labelName="Nombre" />
-                <InputForm labelName="Email" />
-                <InputForm labelName="Teléfono" />
+                <InputForm labelName="Nombre" important={true} />
+                <InputForm labelName="Email" important={true} />
+                <InputForm labelName="Teléfono" important={true} />
                 <div class="pb-5">
                     <p class="font-bold">Tipo de servicio *</p>
                     <label for="Nombre">
@@ -32,7 +49,7 @@ import Layout from "@/layouts/Layout.astro";
                         </select>
                     </label>
                 </div>
-                <InputForm labelName="Detalles" />
+                <InputForm labelName="Detalles" important={false} />
                 <CheckboxForm
                     privacy="true"
                     text="Aceptar que mis datos sean gestionados de acuerdo con los"
@@ -42,7 +59,7 @@ import Layout from "@/layouts/Layout.astro";
                 />
                 <button
                     type="submit"
-                    class="w-full mt-5 p-3 rounded-2xl text-white font-bold text-2xl cursor-pointer bg-[#C22A24]"
+                    class="w-full mt-3 p-3 rounded-2xl text-white font-bold text-2xl cursor-pointer bg-[#C22A24]"
                     >Enviar</button
                 >
             </form>
