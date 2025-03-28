@@ -1,0 +1,40 @@
+---
+import IconoLandig from "@/assets/svg/IconoLandig.astro";
+import MembersCard from "./MembersCard.astro";
+import SectionTitle from "./SectionTitle.astro";
+---
+
+<div class="mb-0 text-center text-3xl p-14 relative pr-0">
+    <div class="grid grid-cols-2">
+        <div class="justify-center">
+            <SectionTitle Children="Nuestro equipo" />
+            <div class="inline-flex gap-10 max-lg:flex-col">
+                <MembersCard />
+            </div>
+        </div>
+        <div
+            class="bg-[#C22A24] p-15 flex justify-center flex-col items-center"
+        >
+            <SectionTitle
+                Color="white"
+                Children=`Ac Gabinete Inmobiliario. Expertos en la gestión de la
+                compra-venta y alquiler de inmuebles`
+            />
+            <section class="w-1/3 p-7">
+                <IconoLandig />
+            </section>
+            <p class="text-left text-xl text-white prose pb-7">
+                Ac Gabinete Inmobiliario, nace de la experiencia y la ilusión,
+                para ofrecer un servicio excelente, en cualquier proceso
+                inmobiliario. Profesionales en el sector, con mas de diez años
+                de experiencia. Ofrecemos un servicio integral, desde la
+                valoración gratuita del inmueble, hasta terminar el proceso de
+                compra-venta, incluyendo la firma en notaria, o el proceso de
+                firma del contrato de alquiler. Tramitamos herencias.
+                Gestionamos prestamos hipotecarios. Descalificamos viviendas de
+                protección oficial. Realizamos certificado energético del
+                inmueble. Gestión de todo tipo de seguros.
+            </p>
+        </div>
+    </div>
+</div>

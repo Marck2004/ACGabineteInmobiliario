@@ -1,0 +1,17 @@
+---
+const { labelName, important = true } = Astro.props;
+---
+
+<div class="pb-5">
+    <label for="Nombre" class="font-bold">
+        {labelName}
+        {important ? "*" : ""}
+        <input
+            type="text"
+            id={labelName}
+            name={labelName}
+            class="border p-2 w-full border-[#D4D9DC] rounded-xl shadow-inner"
+            placeholder={labelName}
+        />
+    </label>
+</div>

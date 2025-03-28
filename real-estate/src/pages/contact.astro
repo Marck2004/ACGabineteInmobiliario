@@ -1,0 +1,51 @@
+---
+import CheckboxForm from "@/components/CheckboxForm.astro";
+import InputForm from "@/components/InputForm.astro";
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout>
+    <div class="container flex flex-row mx-auto p-10">
+        <div class="w-full">
+            <h1 class="text-4xl font-semibold">Contacta con nosotros</h1>
+        </div>
+        <div class="w-full">
+            <form method="post">
+                <InputForm labelName="Nombre" />
+                <InputForm labelName="Email" />
+                <InputForm labelName="Teléfono" />
+                <div class="pb-5">
+                    <p class="font-bold">Tipo de servicio *</p>
+                    <label for="Nombre">
+                        <select
+                            id="ServiceType"
+                            name="ServiceType"
+                            class="border p-2 w-full border-[#D4D9DC] rounded-xl shadow-inner"
+                        >
+                            <option value="search"
+                                >Estoy buscando un inmueble</option
+                            >
+                            <option value="operation"
+                                >Quiero vender/alquilar un inmueble</option
+                            >
+                            <option value="other">Otros</option>
+                        </select>
+                    </label>
+                </div>
+                <InputForm labelName="Detalles" />
+                <CheckboxForm
+                    privacy="true"
+                    text="Aceptar que mis datos sean gestionados de acuerdo con los"
+                />
+                <CheckboxForm
+                    text="Acepto de modo inequívoco recibir boletines, newsletter o comunicaciones comerciales de esta entidad."
+                />
+                <button
+                    type="submit"
+                    class="w-full mt-5 p-3 rounded-2xl text-white font-bold text-2xl cursor-pointer bg-[#C22A24]"
+                    >Enviar</button
+                >
+            </form>
+        </div>
+    </div>
+</Layout>

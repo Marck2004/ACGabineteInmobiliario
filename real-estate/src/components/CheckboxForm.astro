@@ -1,0 +1,19 @@
+---
+const { text, privacy = false } = Astro.props;
+---
+
+<div class="text-sm">
+    <label for="a">
+        <input type="checkbox" name="a" id="a" />
+        {text}
+        {
+            privacy ? (
+                <span class="text-blue-400 hover:underline">
+                    <a href="#">Política de Privacidad</a>
+                </span>
+            <span> *</span>) : (
+                ""
+            )
+        }
+    </label>
+</div>

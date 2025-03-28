@@ -15,14 +15,14 @@
 }
 
 @font-face {
-    font-family: "Lora";
-    src: url("fonts/Lora.ttf");
+    font-family: "Roboto";
+    src: url("fonts/Roboto.ttf");
 }
 h1 {
     font-family: "Montserrat";
 }
 p {
-    font-family: "Lora";
+    font-family: "Roboto";
 }
 
 html,body {
