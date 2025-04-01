@@ -11,23 +11,19 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-export default {
-	async fetch(request, env, ctx): Promise<Response> {
-		const apiKey = env.RESEND_API_KEY;
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${apiKey}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        from: "tu-email@tudominio.com",
-        to: "marcosmaestrocobo@gmail.com",
-        subject: "Prueba de email desde Cloudflare Worker",
-        html: "<h1>¡Hola!</h1><p>Este es un correo enviado desde un Worker.</p>"
-      })
-    });
+import { Resend } from 'resend';
+// import { EmailTemplate } from './emails/email-template';
 
-    return new Response(await response.text(), { status: response.status });
-	},
-} satisfies ExportedHandler<Env>;
+export default {
+  async fetch(request: Request): Promise<Response> {
+    const resend = new Resend('re_gBaL7VH1_1kt2ki3XKSn1ujZowPF9bARm');
+    const data = await resend.emails.send({
+      from: 'marcosmaestrocobo@gmail.com',
+      to: ['marcosmaestrocobo@gmail.com'],
+      subject: 'hello world',
+      react: 'Hello',
+    });
+    return Response.json(data);
+  }
+
+}satisfies ExportedHandler<Env, ExecutionContext>;
