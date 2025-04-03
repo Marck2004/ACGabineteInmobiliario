@@ -1,0 +1,16 @@
+---
+const { selectTitle, label } = Astro.props;
+---
+
+<div class="w-1/2">
+    <p class="font-bold">{selectTitle}</p>
+    <label for={label}>
+        <select
+            id={label}
+            name={label}
+            class="border p-2 w-full border-[#D4D9DC] rounded-xl shadow-inner"
+        >
+            <slot />
+        </select>
+    </label>
+</div>

@@ -6,6 +6,7 @@ import CheckboxForm from "@/components/CheckboxForm.astro";
 import InputForm from "@/components/InputForm.astro";
 import Layout from "@/layouts/Layout.astro";
 import FormButton from "@/components/FormButton.astro";
+import SelectForm from "@/components/SelectForm.astro";
 ---
 
 <Layout>
@@ -29,26 +30,22 @@ import FormButton from "@/components/FormButton.astro";
         </div>
         <div class="w-full">
             <form method="post">
-                <InputForm labelName="Nombre" important={true} />
+                <InputForm labelName="Name" important={true} />
                 <InputForm labelName="Email" important={true} />
-                <InputForm labelName="Teléfono" important={true} />
+                <InputForm labelName="Phone" important={true} />
                 <div class="pb-5">
-                    <p class="font-bold">Tipo de servicio *</p>
-                    <label for="Nombre">
-                        <select
-                            id="ServiceType"
-                            name="ServiceType"
-                            class="border p-2 w-full border-[#D4D9DC] rounded-xl shadow-inner"
+                    <SelectForm
+                        selectTitle="Tipo de servicio *"
+                        label="serviceType"
+                    >
+                        <option value="search"
+                            >Estoy buscando un inmueble</option
                         >
-                            <option value="search"
-                                >Estoy buscando un inmueble</option
-                            >
-                            <option value="operation"
-                                >Quiero vender/alquilar un inmueble</option
-                            >
-                            <option value="other">Otros</option>
-                        </select>
-                    </label>
+                        <option value="operation"
+                            >Quiero vender/alquilar un inmueble</option
+                        >
+                        <option value="other">Otros</option>
+                    </SelectForm>
                 </div>
                 <InputForm labelName="Detalles" important={false} />
                 <CheckboxForm
