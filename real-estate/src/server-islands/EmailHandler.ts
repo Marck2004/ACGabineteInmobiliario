@@ -1,7 +1,6 @@
-// src/components/EmailHandler.ts
 import nodemailer from 'nodemailer';
 
-export async function sendEmail(data: { name: string; email: string; message: string, serviceType: string,
+export async function sendEmail(data: { name: string; email: string; phone: string, serviceType: string,
     details:string }) {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -15,7 +14,7 @@ export async function sendEmail(data: { name: string; email: string; message: st
     from: data.email,
     to: import.meta.env.EMAIL_USER,
     subject: `Nuevo mensaje de ${data.name}`,
-    text: data.message,
+    text: data.details,
   };
 
   try {

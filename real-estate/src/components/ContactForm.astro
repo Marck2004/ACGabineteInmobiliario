@@ -12,7 +12,7 @@ if (Astro.request.method === "POST") {
     const formData = await Astro.request.formData();
     const name = formData.get("Name")?.toString() || "";
     const email = formData.get("Email")?.toString() || "";
-    const message = formData.get("Phone")?.toString() || "";
+    const phone = formData.get("Phone")?.toString() || "";
     const serviceType = formData.get("serviceType")?.toString() || "";
     const details = formData.get("Detalles")?.toString() || "";
 
@@ -21,7 +21,7 @@ if (Astro.request.method === "POST") {
     const result = await sendEmail({
         name,
         email,
-        message,
+        phone,
         serviceType,
         details,
     });
@@ -33,7 +33,7 @@ if (Astro.request.method === "POST") {
 export const prerender = true;
 ---
 
-<form method="POST">
+<form method="POST" action="/contact">
     <InputForm labelName="Name" important={true} />
     <InputForm labelName="Email" important={true} />
     <InputForm labelName="Phone" important={true} />
