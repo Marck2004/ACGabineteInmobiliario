@@ -1,11 +1,10 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import bgImg from "@/assets/logo-landing.webp";
-import MembersCard from "@/components/MembersCard.astro";
-import { getCollection } from "astro:content";
 import PropertiesCarousel from "@/components/PropertiesCarousel.astro";
-import SectionTitle from "@/components/SectionTitle.astro";
 import CompanyDescription from "@/components/CompanyDescription.astro";
+
+export const prerender = true;
 ---
 
 <style>

@@ -7,6 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  output: 'server',
   vite: {
     plugins: [tailwindcss()],
     resolve: {
