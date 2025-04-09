@@ -4,7 +4,7 @@ const { text, privacy = false } = Astro.props;
 
 <div class="text-sm p-2">
     <label for="a">
-        <input type="checkbox" name="a" id="a" />
+        <input type="checkbox" name="a" id="a" required = {privacy} />
         {text}
         {
             privacy ? (

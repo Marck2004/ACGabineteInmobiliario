@@ -20,16 +20,16 @@ export const prerender = true;
         <form
             action=""
             method="post"
-            class="grid grid-cols-[1fr_2fr] p-5 w-full"
+            class="grid sm:grid-cols-[1fr_2fr] max-sm:grid-flow-row p-5 w-full gap-5"
         >
-            <section class="pr-5 border-r-3 border-gray-400">
+            <section class="sm:pr-5 sm:border-r-3 sm:border-gray-400">
                 <h1 class="text-2xl w-full">Datos de contacto</h1>
                 <InputForm labelName="Nombre" important="true" />
                 <InputForm labelName="Teléfono" important="true" />
                 <InputForm labelName="Email" important="true" />
                 <InputForm labelName="Mensaje" important="true" />
             </section>
-            <section class="pl-5">
+            <section class="sm:pl-5">
                 <h1 class="text-2xl">Datos del inmueble</h1>
                 <section class="inline-flex w-full gap-5">
                     <InputForm labelName="Provincia" important="true" />
