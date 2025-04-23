@@ -20,16 +20,16 @@ export const prerender = true;
 		before:opacity-82"
 	>
 		<div class="container m-auto items-center pt-10">
-			<div class="relative bg-white">
+			<div class="relative bg-white py-8">
 				<img
 					src={bgImg.src}
-					class="w-full h-full object-cover opacity-30 p-6"
+					class="w-full object-cover opacity-30 p-6"
 				/>
 				<div
-					class="grid grid-cols-2 items-center absolute inset-0 bg-black/60 rounded-lg"
+					class="grid sm:grid-cols-2 items-center absolute inset-0 bg-black/60 rounded-lg"
 				>
 					<div
-						class="flex flex-col w-full justify-center items-center text-center md:text-left"
+						class="flex flex-col w-full justify-center items-center text-center md:text-left max-sm:hidden"
 					>
 						<h1
 							class="my-4 max-lg:text-3xl text-5xl font-bold leading-tight text-center text-white"
@@ -49,7 +49,7 @@ export const prerender = true;
 						<form
 							action=""
 							method="post"
-							class="absolute p-8 bg-black/50 w-3/4"
+							class="absolute p-8 bg-black/50 w-full"
 						>
 							<div class="flex justify-between gap-5">
 								<button
