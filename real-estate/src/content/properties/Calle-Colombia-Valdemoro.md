@@ -25,7 +25,7 @@ bathrooms: 4
 address: "Calle Colombia, Valdemoro"
 videos:
 images: 
-    -   "/ImgProperties/Calle-Colombia-Valdemoro/FirstImg.jpg"
+    -   "/ImgProperties/Calle-Colombia-Valdemoro/ColombiaImg.jpg"
 features: 
     extras:
     -   "Garaje individual"
