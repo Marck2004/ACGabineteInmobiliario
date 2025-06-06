@@ -3,3 +3,8 @@ export interface EmployerType {
 	Phone: string,
 	Img: string
 }
+
+export interface NavConstType {
+	title: string,
+	url: string
+}

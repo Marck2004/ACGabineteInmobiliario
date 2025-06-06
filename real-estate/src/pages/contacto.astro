@@ -1,0 +1,30 @@
+---
+import Phone from "@/assets/svg/Phone.astro";
+import Location from "@/assets/svg/Location.astro";
+import Email from "@/assets/svg/Email.astro";
+import Layout from "@/layouts/Layout.astro";
+import ContactForm from "@/components/ContactForm.astro";
+---
+
+<Layout>
+  <div class="container flex flex-row max-sm:flex-col mx-auto p-8 gap-8">
+    <div class="w-full">
+      <h1 class="text-4xl mb-7">Contacta con nosotros</h1>
+      <div class="bg-gray-100 p-10 rounded-2xl shadow-2xl">
+        <p class="text-xl font-bold text-slate-600">Donde encontrarnos</p>
+        <div class="grid-rows-3 text-slate-600 mt-5">
+          <p class="flex gap-4"><Phone /> 662547370</p>
+          <p class="flex gap-4">
+            <Email /> info@gabineteinmobiliario.com
+          </p>
+          <p class="flex gap-2">
+            <Location /> Calle Orquídea, 61, Illescas, España
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="w-full">
+      <ContactForm />
+    </div>
+  </div>
+</Layout>

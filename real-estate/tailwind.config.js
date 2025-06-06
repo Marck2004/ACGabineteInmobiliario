@@ -7,7 +7,9 @@ export default {
     "./src/**/*.{html,js,ts,jsx,tsx,md}",
     "./components/**/*.{html,js,ts,jsx,tsx}",
   ],
-  plugins: [typography],
+  plugins: [
+    require('@tailwindcss/typography')
+  ],
   theme: {
     extend: {
       fontFamily: {

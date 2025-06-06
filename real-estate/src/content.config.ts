@@ -28,4 +28,13 @@ const properties = defineCollection({
     })
 })
 
-export const collections = { properties }
+const blogProperties = defineCollection({
+    schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        date: z.string(),
+        company: z.string()
+    })
+})
+
+export const collections = { properties, blogProperties }

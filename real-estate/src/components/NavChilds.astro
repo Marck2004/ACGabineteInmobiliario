@@ -1,4 +1,6 @@
 ---
+import type { NavConstType } from "@/interfaces/EmployerInterface";
+
 const { childs } = Astro.props;
 ---
 
@@ -7,10 +9,12 @@ const { childs } = Astro.props;
   class="lg:group-hover:block max-lg:group-focus-within:block max-lg:w-full shadow-lg lg:absolute bg-white gray-700 hidden rounded-2xl w-[12%] items-center"
 >
   {
-    childs.map((child: string) => (
-      <li class="hover:bg-gray-100 rounded-2xl cursor-pointer pr-4 pb-2 pt-2 pl-2 hover:font-bold no-underline transition-all duration-200">
-        <a>{child}</a>
-      </li>
+    childs.map((child: NavConstType) => (
+      <a href={child.url}>
+        <li class="hover:bg-gray-100 rounded-2xl cursor-pointer pr-4 pb-2 pt-2 pl-2 hover:font-bold no-underline transition-all duration-200">
+          <p>{child.title}</p>
+        </li>
+      </a>
     ))
   }
 </ul>

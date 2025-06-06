@@ -1,0 +1,18 @@
+---
+import Buildings from "@/assets/svg/Buildings.astro";
+
+const {date, company} = Astro.props;
+---
+<section class="flex gap-2">
+    <div class="bg-gray-200 rounded-2xl w-[40%] text-center"> 
+        <p class="font-semibold">
+            {date}
+        </p>
+    </div>
+    <div class="bg-gray-200 rounded-2xl w-[40%] text-center inline-flex pl-2"> 
+        <Buildings />
+        <p class="font-semibold">
+            {company}
+        </p>
+    </div>
+</section>

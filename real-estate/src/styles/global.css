@@ -11,13 +11,19 @@
 
 @font-face {
     font-family: "Montserrat";
-    src: url("fonts/Montserrat.ttf");
+    src: url("/fonts/Montserrat.ttf");
 }
 
 @font-face {
     font-family: "Roboto";
-    src: url("fonts/Roboto.ttf");
+    src: url("/fonts/Roboto.ttf");
 }
+
+@font-face {
+    font-family: "Bookman";
+    src: url("/fonts/Bookman.ttf");
+}
+
 h1 {
     font-family: "Montserrat";
 }
