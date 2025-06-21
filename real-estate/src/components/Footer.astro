@@ -4,46 +4,28 @@ import Instagram from "@/assets/svg/Instagram.astro";
 import X from "@/assets/svg/X.astro";
 import Pencil from "@/assets/svg/Pencil.astro";
 import Buildings from "@/assets/svg/Buildings.astro";
+import { footerConsts } from "@/consts/FooterConsts";
+import type { footerItemsInterface } from "@/interfaces/FooterItemsInterface";
 ---
 
 <footer
   class="bg-gray-100 shadow-inner border-t border-zinc-300 bottom-0 w-full mt-0 z-10"
 >
-  <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-12">
-    <div class="grid sm:grid-cols-4">
-      <div>
-        <h2 class="mb-3 text-xl font-normal text-gray-600">Legal</h2>
-        <ol>
-          <li>Política de privacidad</li>
-          <li>Aviso legal</li>
-          <li>Política de cookies</li>
-          <li>Preferenias de cookies</li>
-        </ol>
-      </div>
-      <div>
-        <h2 class="mb-3 text-xl font-normal text-gray-600">
-          Información de contacto
-        </h2>
-        <ol>
-          <li>
-            <span class="inline-flex"><Pencil /> Formulario de contacto</span>
-          </li>
-          <li>
-            <span class="inline-flex"><Buildings /> Nuestras oficinas</span>
-          </li>
-        </ol>
-      </div>
-      <div>
-        <h2 class="mb-3 text-xl font-normal text-gray-600">Links de ayuda</h2>
-        <ol>
-          <li>Política de privacidad</li>
-          <li>Aviso legal</li>
-          <li>Política de cookies</li>
-          <li>Preferenias de cookies</li>
-        </ol>
-      </div>
-      <div>
-        <h2 class="mb-4 text-xl font-normal text-gray-600">Social</h2>
+  <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-12 grid sm:grid-cols-4">
+      {footerConsts.map((item: footerItemsInterface) => (
+        <div class="p-2">
+          <h2 class="pb-3 text-3xl text-gray-600 font-bold">{item.title}</h2>
+          <ol>
+            {
+              item.childs.map((child) => (
+                <li class={child.svg && 'flex cursor-pointer'}>{child.svg && <child.svg /> } <a href={child.url}>{child.name}</a></li>
+              ))
+            }
+          </ol>
+        </div>
+      ))}
+      <div class="p-2">
+        <h2 class="pb-3 text-3xl font-bold text-gray-600">Social</h2>
         <div class="inline-flex space-x-2">
           <span>
             <a
@@ -68,6 +50,5 @@ import Buildings from "@/assets/svg/Buildings.astro";
           </span>
         </div>
       </div>
-    </div>
   </div>
 </footer>
