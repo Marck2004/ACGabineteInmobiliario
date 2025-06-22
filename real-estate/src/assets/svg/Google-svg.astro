@@ -7,39 +7,59 @@
     viewBox="0 0 100 100"
     width="2.2rem"
     height="2.2rem"
-    aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     class="w-14 h-14"
+    aria-hidden="true"
   >
-    <circle cx="50" cy="50" r="50" fill="#FFF"></circle>
+    <!-- Fondo blanco -->
+    <circle cx="50" cy="50" r="50" fill="#FFF" />
+
+    <!-- Definición del círculo base para los trazos -->
     <defs>
-      <circle id="circle" cx="50" cy="50" r="40" fill="none" stroke-width="20"
-      ></circle>
+      <circle id="circle" cx="50" cy="50" r="40" fill="none" stroke-width="12" />
     </defs>
-    <!-- Blue -->
+
+    <!-- Colores Google -->
     <use
       xlink:href="#circle"
       stroke="#4285F4"
-      stroke-dasharray="62.831853 188.495559"
-      stroke-dashoffset="31.375"></use>
-    <!-- Red -->
+      stroke-dasharray="62.8 188.5"
+      stroke-dashoffset="31.4"
+      stroke-linecap="round"
+    />
     <use
       xlink:href="#circle"
       stroke="#EA4335"
-      stroke-dasharray="62.831853 188.495559"
-      stroke-dashoffset="94.125"></use>
-    <!-- Orange -->
+      stroke-dasharray="62.8 188.5"
+      stroke-dashoffset="94.1"
+      stroke-linecap="round"
+    />
     <use
       xlink:href="#circle"
       stroke="#FBBC05"
-      stroke-dasharray="62.831853 188.495559"
-      stroke-dashoffset="156.975"></use>
-    <!-- Green -->
+      stroke-dasharray="62.8 188.5"
+      stroke-dashoffset="156.9"
+      stroke-linecap="round"
+    />
     <use
       xlink:href="#circle"
       stroke="#34A853"
-      stroke-dasharray="62.831853 188.495559"
-      stroke-dashoffset="219.925"></use>
-    <text x="50" y="50" text-anchor="middle" dy=".3em">4,5</text>
+      stroke-dasharray="62.8 188.5"
+      stroke-dashoffset="219.9"
+      stroke-linecap="round"
+    />
+
+    <!-- Texto centrado -->
+    <text
+      x="50"
+      y="57"
+      text-anchor="middle"
+      font-size="22"
+      font-weight="bold"
+      font-family="Arial, sans-serif"
+      fill="#000"
+    >
+      4,5
+    </text>
   </svg>
 </a>

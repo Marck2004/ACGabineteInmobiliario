@@ -18,7 +18,7 @@ const blogProperties = await getCollection("blogProperties");
 <Layout>
   <div class="container p-8 align-middle justify-center mx-auto">
     <h1 class="text-4xl mb-6">Blog</h1>
-    <div class=`grid-cols-${blogProperties.length} w-1/2`>
+    <div class=`grid-cols-${blogProperties.length} w-full lg:w-1/2`>
       {
         blogProperties.map((item) => (
           <section class="mt-14">

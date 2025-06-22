@@ -4,7 +4,6 @@ import bgImg from "@/assets/logo-landing.webp";
 import PropertiesCarousel from "@/components/PropertiesCarousel.astro";
 import CompanyDescription from "@/components/CompanyDescription.astro";
 
-export const prerender = true;
 ---
 
 <style>
@@ -20,7 +19,7 @@ export const prerender = true;
 		before:opacity-82"
   >
     <div class="container m-auto items-center">
-      <div class="relative bg-white py-8">
+      <div class="relative bg-white py-8 rounded-lg">
         <img src={bgImg.src} class="w-full object-cover opacity-30 p-6" />
         <div
           class="grid sm:grid-cols-2 items-center absolute inset-0 bg-black/60 rounded-lg"

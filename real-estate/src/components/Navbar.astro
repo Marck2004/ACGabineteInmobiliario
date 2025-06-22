@@ -6,10 +6,9 @@ import { inmueblesList } from "@/consts/NavConsts";
 import { seccionesList } from "@/consts/NavConsts";
 ---
 
-<nav id="header" class="sticky w-full z-30 text-white bg-white fixed-top">
-  <div
-    class="w-full justify-between container mx-auto flex flex-wrap items-center mt-0 pt-2 pb-4"
-  >
+<nav id="header" class="sticky w-full z-30 text-white bg-gray-100 fixed-top border-b border-zinc-300">
+  <div class="w-full justify-between container mx-auto flex flex-wrap items-center mt-0 pt-2 pb-4">
+
     <div>
       <a
         class="toggleColour w-56 flex justify-center text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
@@ -18,31 +17,32 @@ import { seccionesList } from "@/consts/NavConsts";
         <IconoLandig />
       </a>
     </div>
-    <div class="block lg:hidden pr-4">
-      <button
-        id="nav-toggle"
-        class="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+
+    <input type="checkbox" id="menu-toggle" class="hidden peer" />
+
+    <label for="menu-toggle" class="block lg:hidden pr-4 cursor-pointer">
+      <svg
+        class="fill-current h-6 w-6 text-pink-800 hover:text-gray-900 transition hover:scale-105 duration-300 ease-in-out"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <svg
-          class="fill-current h-6 w-6"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <title>Menu</title>
-          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-        </svg>
-      </button>
-    </div>
+        <title>Menu</title>
+        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+      </svg>
+    </label>
+
     <div
-      class="w-full flex-grow lg:!flex justify-end lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
       id="nav-content"
+      class="w-full flex-grow peer-checked:flex lg:!flex justify-end lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
     >
       <ul class="list-reset lg:flex justify-end flex-1 items-center gap-4">
         <li class="group mr-3 max-lg:flex" tabindex="0">
           <a
             class="flex gap-2 py-2 px-4 hover:text-green no-underline transition-all duration-200 hover:text-[#c22a24]"
-            href="#">Inmuebles <AngleDown /></a
+            href="#"
           >
+            Inmuebles <AngleDown />
+          </a>
           <NavChilds childs={inmueblesList} />
         </li>
         <li class="group mr-3 max-lg:flex" tabindex="0">
@@ -56,32 +56,21 @@ import { seccionesList } from "@/consts/NavConsts";
         <li class="mr-3">
           <a
             class="inline-block py-2 px-4 text-black no-underline hover:text-green transition-all duration-200 hover:text-[#c22a24]"
-            href="/valora-tu-inmueble">Valora tu inmueble</a
+            href="/valora-tu-inmueble"
           >
+            Valora tu inmueble
+          </a>
         </li>
         <li class="mr-3">
           <a
             class="inline-block py-2 px-4 text-black no-underline hover:text-green transition-all duration-200 hover:text-[#c22a24]"
-            href="/contacto">Contacto</a
+            href="/contacto"
           >
+            Contacto
+          </a>
         </li>
       </ul>
     </div>
   </div>
   <hr class="border-b border-gray-100 my-0 py-0" />
 </nav>
-
-<script>
-  document.getElementById("nav-toggle")!.addEventListener("click", function () {
-    let navContent = document.getElementById("nav-content");
-
-    if (
-      navContent!.style.display === "none" ||
-      navContent!.style.display === ""
-    ) {
-      navContent!.style.display = "flex";
-    } else if (navContent!.style.display === "flex") {
-      navContent!.style.display = "none";
-    }
-  });
-</script>
