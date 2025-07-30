@@ -5,11 +5,11 @@ import type { footerItemsInterface } from "@/interfaces/FooterItemsInterface";
 export const footerConsts: footerItemsInterface[] = [
     {
         title : 'Legal',
-        childs : [{name: 'Política de privacidad'}, {name: 'Aviso legal'}, {name: 'Política de cookies'}, {name: 'Preferencias de cookies'}]
+        childs : [{name: 'Política de privacidad', url: "/Política_de_privacidad"}, {name: 'Aviso legal', url: "/Aviso_legal"}, {name: 'Política de cookies', url: "/Política_de_cookies"}, {name: 'Preferencias de cookies', isModal: true}],
     },
     {
         title : 'Links de ayuda',
-        childs : [{name: 'Últimos inmuebles'}, {name: 'Anuncios destacados'}, {name: 'Buscar inmuebles'}, {name: 'Nuestro equipo', url: '/#team'}]
+        childs : [{name: 'Últimos inmuebles', url: '/'}, {name: 'Anuncios destacados', url: '/'}, {name: 'Buscar inmuebles', url: '/'}, {name: 'Nuestro equipo', url: '/#team'}]
     },
     {
         title : 'Información de contacto',

@@ -4,10 +4,13 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import tailwindcss from "@tailwindcss/vite";
 
+import react from '@astrojs/react';
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  output: 'server',
+  output: 'static',
+
   vite: {
     plugins: [tailwindcss()],
     resolve: {
@@ -16,4 +19,5 @@ export default defineConfig({
       }
     }
   },
+  integrations: [react()],
 });

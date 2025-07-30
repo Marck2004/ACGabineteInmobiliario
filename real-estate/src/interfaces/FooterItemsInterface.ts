@@ -7,4 +7,5 @@ interface childsWithSvg {
     name: string,
     svg?: any,
     url?: string
+    isModal?: boolean
 }

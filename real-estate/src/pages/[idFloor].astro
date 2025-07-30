@@ -1,7 +1,15 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 
-const { idFloor } = Astro.props;
+export async function getStaticPaths() {
+  return [
+    { params: { idFloor: "1" } },
+    { params: { idFloor: "2" } },
+    { params: { idFloor: "3" } },
+  ];
+}
+
+const { idFloor } = Astro.params;
 ---
 
 <Layout>

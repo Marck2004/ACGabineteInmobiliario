@@ -1,0 +1,26 @@
+.selectFilters{
+    background-color: white;
+    width: 85%;
+    padding: 0.5rem;
+    border-radius: 0.35rem;
+    border: 2px solid #a5a4a4;
+}
+
+.divFiltersCol{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.divFiltersInline{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filtersTitle{
+    font-weight: bold;
+    align-items: center;
+    font-size: medium;
+}
