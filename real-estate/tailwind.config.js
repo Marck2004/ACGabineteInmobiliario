@@ -8,7 +8,8 @@ export default {
     "./components/**/*.{html,js,ts,jsx,tsx}",
   ],
   plugins: [
-    require('@tailwindcss/typography')
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp')
   ],
   theme: {
     extend: {

@@ -1,5 +1,4 @@
 import { defineCollection, z } from "astro:content";
-import { title } from "process";
 
 const properties = defineCollection({
     schema: z.object({
