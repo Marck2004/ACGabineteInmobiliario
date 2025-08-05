@@ -18,9 +18,11 @@ import { ClientRouter } from "astro:transitions";
     <ClientRouter />
   </head>
 
-  <body>
+  <body class="flex flex-col min-h-screen">
     <Navbar />
-    <slot />
+    <main class="flex-grow">
+      <slot />
+    </main>
     <Footer />
     <div class="flex fixed right-10 bottom-10 z-50 gap-5">
       <!-- <GoogleSvg /> -->
