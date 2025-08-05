@@ -5,35 +5,31 @@ import { caracteristicsFilters } from '@/consts/caracteristicsFilters';
 import { filterWithChildsConst } from '@/consts/selectFilterWithChilds';
 import React, { useEffect } from 'react';
 
-type Filters = { [key: string]: string };
 interface AsideSoldProps {
-    filters: Filters;
-    setFilters: React.Dispatch<React.SetStateAction<Filters>>;
+    filters: interfaceFilters[];
+    setFilters: React.Dispatch<React.SetStateAction<interfaceFilters[]>>;
 }
 
 export const AsideSold: React.FC<AsideSoldProps> = ({ filters, setFilters }) => {
 
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const { name, value } = e.target;
-        setFilters((prevFilters) => ({
+        setFilters((prevFilters) => ([
             ...prevFilters,
-            [name]: value
-        }));
+            { name: name, value: value }
+        ]));
     };
 
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
-        if (!(name in filters)) {
-            setFilters((prevFilters: any) => ({
+        if (!filters.some(filter => filter.name === name)) {
+            setFilters((prevFilters) => ([
                 ...prevFilters,
-                [name]: value
-            }));
+                { name: name, value: value }
+            ]));
         } else {
-            setFilters((prevFilters: any) => {
-                const { [name]: _, ...rest } = prevFilters;
-                return rest;
-            });
+            setFilters((prevFilters) => prevFilters.filter(filter => filter.name !== name));
         }
     };
 
