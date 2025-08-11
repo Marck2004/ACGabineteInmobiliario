@@ -1,6 +1,6 @@
 ---
-title: "Comisión de agencia. Se puede desgravar."
-description: |
+titulo: "Comisión de agencia. Se puede desgravar."
+descripcion: |
     Se puede desgravar la comisión inmobiliaria de la  venta de una vivienda. Para deducirla en el IRPF le facilitamos la factura inmobiliaria de los honorarios por haber gestionado la operación. 
 
     ¿Cómo desgravar en Hacienda la comisión de la agencia?
@@ -24,6 +24,6 @@ description: |
 
 
     Por otro lado, el valor de compra puede incrementarse deduciendo los costes de reformas y mejoras realizadas en el inmueble, impuestos pagados al momento de la compra, como el Impuesto de Transmisiones Patrimoniales (ITP) o el IVA, y los honorarios de notario y agencia inmobiliaria abonados en su momento.
-date: "2 de septiembre de 2024"
-company: "Ac Gabinete Inmobiliario"
+fecha: "2 de septiembre de 2024"
+compañia: "Ac Gabinete Inmobiliario"
 ---

@@ -14,10 +14,22 @@ export const AsideSold: React.FC<AsideSoldProps> = ({ filters, setFilters }) => 
 
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const { name, value } = e.target;
-        setFilters((prevFilters) => ([
-            ...prevFilters,
-            { name: name, value: value }
-        ]));
+        if (!filters.some(filter => filter.name === name)) {
+            setFilters((prevFilters) => ([
+                ...prevFilters,
+                { name: name, value: value }
+            ]));
+        } else {
+            setFilters((prevFilters) => {
+                const filtered = prevFilters.filter(filter => filter.name !== name);
+
+                const newFilter = {
+                    name: name,
+                    value: value,
+                };
+                return [...filtered, newFilter];
+            });
+        }
     };
 
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +46,7 @@ export const AsideSold: React.FC<AsideSoldProps> = ({ filters, setFilters }) => 
     };
 
     return (
-        <aside className="p-5 bg-gray-200 w-1/5 space-y-3.5 border-2 border-gray-400">
+        <aside className="p-5 bg-gray-200 max-md:w-full space-y-3.5 border-2 border-gray-400 md:w-1/3">
             <h1 className="filtersTitle">Filtrar resultados</h1>
             {filterWithChildsConst.map((filter) => (
                 <div className="divFiltersCol" key={filter.name}>

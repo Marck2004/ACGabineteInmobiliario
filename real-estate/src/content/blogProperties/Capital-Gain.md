@@ -1,6 +1,6 @@
 ---
-title: "Calculo de la Nueva Plusvalía Municipal."
-description: |
+titulo: "Calculo de la Nueva Plusvalía Municipal."
+descripcion: |
     Según el Real Decreto del 08 de noviembre de 2021, para el nuevo calculo de la plusvalía municipal. 
 
     Se han establecido dos nuevas opciones de calculo para su posterior pago. A continuación, pasamos a detallar dichas opciones: 
@@ -17,6 +17,6 @@ description: |
 
     En definitiva. El nuevo calculo de la plusvalía, grava mas, a todas las operaciones que se hagan dentro de los primeros 5 años de su adquisición. Si nos acogemos al método objetivo, pasados esos primeros 5 años, el coeficiente que se aplicara para su calculo, será menor que el modelo anterior a la sentencia del Tribunal Supremo.
 
-date: "10 de diciembre de 2021"
-company: "Ac Gabinete Inmobiliario"
+fecha: "10 de diciembre de 2021"
+compañia: "Ac Gabinete Inmobiliario"
 ---

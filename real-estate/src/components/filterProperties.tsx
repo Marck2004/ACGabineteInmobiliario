@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import type { CollectionEntry } from 'astro:content';
-import type { PropertiesInterface } from "@/interfaces/PropertiesInterface";
-
+import type { FeaturesInterface, PropertiesInterface } from "@/interfaces/PropertiesInterface";
 
 interface interfaceFilterProperties {
     filters: interfaceFilters[],
@@ -14,36 +12,79 @@ export const FilterProperties: React.FC<interfaceFilterProperties> = ({ properti
         property.data
     )));
 
-    const filterPropertiesByCheckbox = (filtersByCheckbox: interfaceFilters[]) => {
-        const allProperties = properties.map((property: any) => (
-            property.data
+    const allProperties: PropertiesInterface[] = properties.map((property: any) => (
+        property.data
+    ));
+
+    const filterPropertiesByCheckbox = (filtersByCheckbox: interfaceFilters[], baseProperties: PropertiesInterface[]) => {
+        let filteredPropertiesByCheckbox = baseProperties.filter(property => (
+            filtersByCheckbox.every(c => property.caracteristicas.extras.includes(c.name))
         ));
-        let aux = allProperties.filter(property => (
-            filtersByCheckbox.every(c => (
-                property.features.extras.includes(c.name)
-            ))
-        ));
-        setFilterProperties(aux);
+        return filteredPropertiesByCheckbox;
+    };
+
+    const filterPropertiesBySelect = (selectFilters: interfaceFilters[], baseProperties: PropertiesInterface[]) => {
+        if (selectFilters.filter(f => f.name.includes('Min') || f.name.includes('Max')).length === 0) {
+            const filtered = baseProperties.filter(c => c.tipo == selectFilters.find(x => x.name == 'Tipo')?.value);
+            return filtered;
+        }
+
+        const intervalFilters = selectFilters.filter(f => f.name.includes('Min') || f.name.includes('Max'));
+        const propertieCaracteristics = Object.keys(allProperties[0].caracteristicas) as (keyof FeaturesInterface)[];
+
+        const filtered = intervalFilters.reduce((acc, filter) => {
+            const filteredKey = propertieCaracteristics.find(c =>
+                filter.name.toLowerCase().includes(c.toLowerCase())
+            );
+            if (!filteredKey) return acc;
+
+            const filterValue = Number(filter.value);
+
+            return acc.filter(p => {
+                const propertyValue = Number(p.caracteristicas[filteredKey]);
+                if (isNaN(propertyValue) || isNaN(filterValue)) return true;
+
+                return filter.name.includes('Min')
+                    ? propertyValue >= filterValue
+                    : propertyValue <= filterValue;
+            });
+        }, baseProperties);
+
+        return filtered;
     };
 
     useEffect(() => {
-        let checkboxFilters = filters.filter((filter) => filter.value == 'on');
-        if (checkboxFilters.length >= 0)
-            filterPropertiesByCheckbox(checkboxFilters);
+        let checkboxFilters = filters.filter(filter => filter.value === 'on');
+        let selectFilters = filters.filter(filter => filter.value !== 'on');
 
+        let filtered = checkboxFilters.length > 0 ? filterPropertiesByCheckbox(checkboxFilters, allProperties) : allProperties;
+
+        filtered = selectFilters.length > 0 ? filterPropertiesBySelect(selectFilters, filtered) : filtered;
+
+        setFilterProperties(filtered);
     }, [filters]);
+
     return (
-        <div className="w-2/3">
-            {filterProperties.map((property) => (
-                <div key={property.address} className="border-2 rounded-2xl flex gap-5">
-                    <img src={property.images[0]} alt="imagen" className="object-cover w-1/4 h-full rounded-2xl" />
-                    <div className="flex-col">
-                        <h3 className="text-2xl font-bold">{property.title}</h3>
-                        <h6 className="text-2xl font-bold">{property.features.totalPrice} €</h6>
-                        <p className="overflow-hidden line-clamp-5">{property.description}</p>
+        <div className="md:w-2/3 w-full">
+            {filterProperties.length > 0 ? filterProperties.map((property) => (
+                <div key={property.direccion} className="border-2 rounded-2xl flex flex-col gap-5 p-5 md:flex-row">
+                    <img
+                        src={property.imagenes[0]}
+                        alt="imagen"
+                        className="object-cover w-full h-48 md:w-1/4 md:h-auto rounded-2xl"
+                    />
+                    <div className="flex flex-col justify-center">
+                        <h3 className="text-2xl font-bold">{property.titulo}</h3>
+                        <h6 className="text-2xl font-bold max-md:hidden">{property.caracteristicas.precio} €</h6>
+                        <p className="overflow-hidden line-clamp-5 max-md:hidden">{property.descripcion}</p>
                     </div>
                 </div>
-            ))}
+            )) :
+                <div className="mx-auto">
+                    <img src="@/src/assets/logo-landing" alt="Imagen inmobiliaria" />
+                    <h2 className="text-2xl font-bold">Actualmente no hay propiedades para mostrar</h2>
+                </div>
+            }
         </div>
     )
 }

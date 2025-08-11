@@ -1,5 +1,4 @@
 ---
-import { AsideSold } from "@/components/asideSolds";
 import { FilterParent } from "@/components/filterParent";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
@@ -8,7 +7,7 @@ const properties = await getCollection("properties");
 ---
 
 <Layout>
-    <div class="p10">
+    <div class="p10 container mx-auto">
         <FilterParent properties={properties} client:load />
     </div>
 </Layout>

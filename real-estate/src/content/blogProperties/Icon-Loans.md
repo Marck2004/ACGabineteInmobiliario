@@ -1,6 +1,6 @@
 ---
-title: "Prestamos ICO para adquisición de vivienda."
-description: |
+titulo: "Prestamos ICO para adquisición de vivienda."
+descripcion: |
     La concesión de estos avales para acceder a la primera vivienda estará sujeta al cumplimiento de determinados requisitos:
 
     Los adquirientes de viviendas deben ser personas físicas y mayores de edad, con residencia legal en España, debiendo acreditarla de manera continua e ininterrumpida durante los dos años anteriores a la solicitud del préstamo.
@@ -14,6 +14,6 @@ description: |
     ICO avalará hasta el 20% del importe del crédito, salvo que la vivienda adquirida disponga de una calificación energética D o superior, en cuyo caso se podrá avalar hasta el 25%.
     Casi 10 meses después de que el Ejecutivo lo anunciara y siete semanas después de su aprobación en Consejo de Ministros, estos avales todavía NO tienen fecha para estar operativos. Se encuentran pendientes del documento con todas las clausulas por parte de ICO. La banca puede reservarse la concesión o no de la hipoteca, aun habiendo cumplido todos los requisitos para acogerse a los prestamos ICO, siempre en función del riesgo hipotecario que tenga la operación.
 
-date: "5 de abril de 2024"
-company: "Ac Gabinete Inmobiliario"
+fecha: "5 de abril de 2024"
+compañia: "Ac Gabinete Inmobiliario"
 ---

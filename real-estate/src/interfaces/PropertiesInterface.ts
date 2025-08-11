@@ -1,29 +1,29 @@
 export interface PropertiesInterface {
-    title: string
-    description: string,
+    titulo: string
+    descripcion: string,
     area: number,
-    houseType: string,
-    reference: string,
-    bedrooms: number,
-    bathrooms: number,
-    address: string,
+    tipo: string,
+    referencia: string,
+    direccion: string,
     videos: string[],
-    images: string[],
-    features: FeaturesInterface,
-    energeticCertification: EnergeticCertificationInterface
+    imagenes: string[],
+    caracteristicas: FeaturesInterface,
+    certificationEnergetica: EnergeticCertificationInterface
 }
 
-interface FeaturesInterface {
+export interface FeaturesInterface {
     extras: [string],
-    pricePerMeter: number,
-    usableArea: number,
-    plotArea: number,
-    floors: number,
-    constructionYear: number,
-    totalPrice: string
+    precioPormetro: number,
+    areaUsable: number,
+    areaDeParcela: number,
+    pisos: number,
+    añoConstruccion: number,
+    precio: string,
+    baños: number,
+    estancias: number,
 }
 
 interface EnergeticCertificationInterface {
-    consumption: string,
-    co2Emissions: string
+    consumo: string,
+    emisionesCo2: string
 }

@@ -7,7 +7,7 @@ export const FilterParent = ({ properties }: any) => {
     const [filters, setFilters] = useState<interfaceFilters[]>([]);
 
     return (
-        <div className="flex gap-5">
+        <div className="flex gap-5 md:flex-row flex-col">
             <AsideSold filters={filters} setFilters={setFilters} />
             <FilterProperties properties={properties} filters={filters} />
         </div>

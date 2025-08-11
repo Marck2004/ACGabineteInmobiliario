@@ -22,10 +22,10 @@ const blogProperties = await getCollection("blogProperties");
       {
         blogProperties.map((item) => (
           <section class="mt-14">
-            <BlogSections date={item.data.date} company={item.data.company} />
-            <h1 class="font-semibold text-2xl my-4">{item.data.title}</h1>
+            <BlogSections date={item.data.fecha} company={item.data.compañia} />
+            <h1 class="font-semibold text-2xl my-4">{item.data.titulo}</h1>
             <p class="line-clamp-3 overflow-hidden text-gray-500">
-              {item.data.description}
+              {item.data.descripcion}
             </p>
           </section>
         ))

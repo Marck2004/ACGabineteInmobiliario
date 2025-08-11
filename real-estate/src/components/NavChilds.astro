@@ -10,7 +10,7 @@ const { childs } = Astro.props;
 >
   {
     childs.map((child: NavConstType) => (
-      <a href={child.url}>
+      <a href={`${child.url}`}>
         <li class="hover:bg-gray-100 rounded-2xl cursor-pointer pr-4 pb-2 pt-2 pl-2 hover:font-bold no-underline transition-all duration-200">
           <p>{child.title}</p>
         </li>
