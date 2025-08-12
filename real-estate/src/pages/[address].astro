@@ -1,0 +1,120 @@
+---
+import Buildings from "@/assets/svg/Buildings.astro";
+import Bed from "@/assets/svg/Bed.astro";
+import Shower from "@/assets/svg/Shower.astro";
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import SectionTitle from "@/components/SectionTitle.astro";
+import BoxProperty from "@/components/BoxProperty.astro";
+
+export async function getStaticPaths() {
+  return [
+    { params: { address: "Calle Colombia, Valdemoro" } },
+    { params: { address: "2" } },
+    { params: { address: "3" } },
+  ];
+}
+
+const { address } = Astro.params;
+
+const properties = await getCollection("properties");
+
+const selectedProperty = properties.find(
+  (c) => c.data.direccion == address,
+)?.data;
+---
+
+<Layout>
+  <section class="flex md:flex-row flex-col p10">
+    <div class="w-2/3">
+      <h1 class="text-3xl text-[var(--color-principal)]">
+        {selectedProperty?.titulo}
+      </h1>
+      <p class="text-[var(--color-gris)]">{selectedProperty?.direccion}</p>
+
+      <img
+        src={selectedProperty!.imagenes[0]}
+        alt=`Foto piso propiedad acgabineteinmobiliario`
+        title=`Foto de propiedad en ${selectedProperty!.direccion}`
+        loading="lazy"
+        decoding="async"
+      />
+      <section class="bg-gray-100 w-full border-2">
+        <ol class="inline-flex gap-5 p-5">
+          <li>
+            <span class="flex gap-2"
+              ><Buildings /> {selectedProperty?.tipo}</span
+            >
+          </li>
+          <p>|</p>
+          <li>
+            <span>{selectedProperty?.area} m2</span>
+          </li>
+          <p>|</p>
+          <li>
+            <span class="flex gap-2"
+              ><Bed /> {selectedProperty?.caracteristicas.estancias}</span
+            >
+          </li>
+          <p>|</p>
+          <li>
+            <span class="flex gap-2"
+              ><Shower />{selectedProperty?.caracteristicas.baños}</span
+            >
+          </li>
+        </ol>
+      </section>
+      <p class="prose my-5">
+        {selectedProperty?.descripcion}
+      </p>
+
+      <SectionTitle Children="Características inmueble" Color="red" />
+      <div class="grid grid-cols-2 gap-5">
+        <section class="flex flex-col gap-5">
+          <BoxProperty>
+            Superficie: {selectedProperty?.area} m2
+          </BoxProperty>
+          <BoxProperty>
+            Superficieparcela: {selectedProperty?.caracteristicas.areaDeParcela}
+            m2
+          </BoxProperty>
+          <BoxProperty>
+            Precio venta / m2: {
+              selectedProperty?.caracteristicas.precioPormetro
+            } €
+          </BoxProperty>
+          <BoxProperty>
+            Plantas: {selectedProperty?.caracteristicas.estancias}
+          </BoxProperty>
+          <BoxProperty>
+            Año de construccion: {
+              selectedProperty?.caracteristicas.añoConstruccion
+            }
+          </BoxProperty>
+        </section>
+        <section class="flex flex-col gap-2">
+          {
+            selectedProperty?.caracteristicas.extras.map((extra) => (
+              <span class="bg-[var(--color-principal)] rounded-2xl p-2 text-white">
+                {extra}
+              </span>
+            ))
+          }
+        </section>
+      </div>
+      <SectionTitle Children="Certificación energética" Color="red" />
+      <section class="grid grid-cols-1 gap-5">
+        <BoxProperty>
+          Consumo energético: {
+            selectedProperty?.certificacionEnergetica.consumo
+          }
+        </BoxProperty>
+        <BoxProperty>
+          Emisión CO2: {selectedProperty?.certificacionEnergetica.emisionesCo2}
+        </BoxProperty>
+      </section>
+    </div>
+    <div></div>
+    {address}
+  </section>
+</Layout>

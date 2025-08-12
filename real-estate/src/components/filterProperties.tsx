@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import type { FeaturesInterface, PropertiesInterface } from "@/interfaces/PropertiesInterface";
+import logo from '@/assets/logo-landing.webp';
 
 interface interfaceFilterProperties {
     filters: interfaceFilters[],
@@ -65,26 +66,40 @@ export const FilterProperties: React.FC<interfaceFilterProperties> = ({ properti
     }, [filters]);
 
     return (
-        <div className="md:w-2/3 w-full">
-            {filterProperties.length > 0 ? filterProperties.map((property) => (
-                <div key={property.direccion} className="border-2 rounded-2xl flex flex-col gap-5 p-5 md:flex-row">
-                    <img
-                        src={property.imagenes[0]}
-                        alt="imagen"
-                        className="object-cover w-full h-48 md:w-1/4 md:h-auto rounded-2xl"
-                    />
-                    <div className="flex flex-col justify-center">
-                        <h3 className="text-2xl font-bold">{property.titulo}</h3>
-                        <h6 className="text-2xl font-bold max-md:hidden">{property.caracteristicas.precio} €</h6>
-                        <p className="overflow-hidden line-clamp-5 max-md:hidden">{property.descripcion}</p>
+        <div className="md:w-2/3 w-full align-bottom">
+            {
+                filterProperties.length > 0 ? filterProperties.map((property) => (
+                    <div key={property.direccion} className="border-2 rounded-2xl flex flex-col gap-5 p-5 md:flex-row transition"
+                        onClick={() => window.location.href = `/${property.direccion}`}>
+                        <img
+                            src={property.imagenes[0]}
+                            alt="imagen"
+                            className="object-cover w-full h-48 md:w-1/4 md:h-auto rounded-2xl"
+                        />
+                        <div className="flex flex-col justify-center">
+                            <h3 className="text-2xl font-bold">{property.titulo}</h3>
+                            <h6 className="text-2xl font-bold max-md:hidden">{property.caracteristicas.precio} €</h6>
+                            <p className="overflow-hidden line-clamp-5 max-md:hidden">{property.descripcion}</p>
+                        </div>
                     </div>
-                </div>
-            )) :
-                <div className="mx-auto">
-                    <img src="@/src/assets/logo-landing" alt="Imagen inmobiliaria" />
-                    <h2 className="text-2xl font-bold">Actualmente no hay propiedades para mostrar</h2>
-                </div>
+                )) :
+                    <div className="flex flex-col mx-auto">
+                        <img
+                            src={logo.src}
+                            className="md:h-auto"
+                            alt="Logotipo de acgabineteinmobiliario en fondo blanco"
+                            loading="lazy"
+                            decoding="async"
+                            title="Inmobiliaria acgabineteinmobiliario - Compra y venta de propiedades"
+                        />
+                        <h2 className="text-2xl font-bold my-2">
+                            No encontramos propiedades que coincidan
+                        </h2>
+                        <p className="text-gray-500">
+                            Intenta modificar los filtros o revisa más tarde.
+                        </p>
+                    </div>
             }
-        </div>
+        </div >
     )
 }

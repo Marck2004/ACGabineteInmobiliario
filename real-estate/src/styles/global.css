@@ -1,13 +1,13 @@
 @import "tailwindcss";
 @tailwind utilities;
-/* @plugin "daisyui" {
+@plugin "daisyui" {
     themes: none;
     root: ":root";
     include: ;
     exclude: ;
     prefix: ;
     logs: true;
-} */
+}
 
 @font-face {
     font-family: "Montserrat";
@@ -59,4 +59,25 @@ html {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+.transition {
+  transition: transform 0.3s ease-in-out;
+}
+
+.transition:hover {
+  transform: scale(1.05);
+}
+
+.flex{
+    display: flex;
+}
+
+.none{
+    display: none;
+}
+
+:root{
+    --color-gris: #6B7280;
+    --color-principal: #c22a24;
 }

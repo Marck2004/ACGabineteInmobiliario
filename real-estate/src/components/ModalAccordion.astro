@@ -1,0 +1,28 @@
+---
+import AngleDown from "@/assets/svg/Angle-down.astro";
+import AngleTop from "@/assets/svg/Angle-top.astro";
+---
+
+<div class="join join-vertical bg-base-100 m-5">
+    <div class="collapse join-item border border-base-300 rounded-2xl">
+        <input type="checkbox" class="peer" />
+        <div
+            class="collapse-title font-semibold flex items-center justify-between gap-2 p-2"
+        >
+            <div class="flex items-center gap-2">
+                <AngleDown class="w-5 h-5" />
+                <span>Cookies estrictamente necesarias</span>
+            </div>
+            <input type="checkbox" class="toggle toggle-sm size-8" />
+        </div>
+        <div class="collapse-content text-sm">
+            Estas cookies son necesarias para que el sitio web funcione y no se
+            pueden desactivar en nuestros sistemas. De forma general, solo se
+            utilizan en acciones como cuando solicita servicios, establece sus
+            preferencias de privacidad, inicia sesión o completa formularios.
+            Puede configurar su navegador para bloquear o alertar sobre estas
+            cookies, pero algunas partes de la web no funcionarán. Estas cookies
+            no almacenan ninguna información de identificación personal.
+        </div>
+    </div>
+</div>

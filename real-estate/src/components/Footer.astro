@@ -4,7 +4,6 @@ import Instagram from "@/assets/svg/Instagram.astro";
 import X from "@/assets/svg/X.astro";
 import { footerConsts } from "@/consts/FooterConsts";
 import type { footerItemsInterface } from "@/interfaces/FooterItemsInterface";
-import ModalLegal from "./ModalLegal.astro";
 ---
 
 <footer
@@ -19,12 +18,14 @@ import ModalLegal from "./ModalLegal.astro";
           <h2 class="pb-3 text-2xl text-gray-600 font-bold">{item.title}</h2>
           <ol>
             {item.childs.map((child) => (
-              <li class={child.svg && `flex`}>
+              <li class={child.svg ? "flex" : ""}>
                 {child.svg && <child.svg />}
                 <a
                   class="cursor-pointer"
-                  href={child.url}
-                  onclick={child.isModal ? `toggleModal('${child.name}')` : ""}
+                  {...(child.url ? { href: child.url } : {})}
+                  {...(child.isModal
+                    ? { "data-cc": "show-preferencesModal" }
+                    : {})}
                 >
                   {child.name}
                 </a>
@@ -34,7 +35,6 @@ import ModalLegal from "./ModalLegal.astro";
         </div>
       ))
     }
-    <ModalLegal />
     <div class="p-2">
       <h2 class="pb-3 text-2xl font-bold text-gray-600">Social</h2>
       <div class="inline-flex space-x-2">
@@ -65,27 +65,14 @@ import ModalLegal from "./ModalLegal.astro";
 </footer>
 
 <script is:inline>
-  toggleModal = function (name) {
-    let modal = "";
-    let modalTitle = "";
-    let modalDescription = "";
-
-    if (name != null) {
-      const id = slugify(name);
-
-      modal = document.getElementById(id);
-      modalTitle = document.getElementById(`${id}-title`);
-      modalDescription = document.getElementById(`${id}-description`);
-    }
-
-    if (modal.style.display === "flex") {
-      modal.style.display = "none";
+  function handleOpenCookiesModal() {
+    let modalId = document.getElementById("Preferencias-de-cookies");
+    if (modalId.classList.contains("flex")) {
+      modalId.classList.add("none");
+      modalId.classList.remove("flex");
     } else {
-      modal.style.display = "flex";
+      modalId.classList.add("flex");
+      modalId.classList.remove("none");
     }
-  };
-
-  function slugify(text) {
-    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   }
 </script>
