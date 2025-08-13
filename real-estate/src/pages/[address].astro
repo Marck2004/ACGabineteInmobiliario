@@ -6,14 +6,9 @@ import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import SectionTitle from "@/components/SectionTitle.astro";
 import BoxProperty from "@/components/BoxProperty.astro";
-
-export async function getStaticPaths() {
-  return [
-    { params: { address: "Calle Colombia, Valdemoro" } },
-    { params: { address: "2" } },
-    { params: { address: "3" } },
-  ];
-}
+import img from "@/assets/logo-landing.webp";
+import InputForm from "@/components/InputForm.astro";
+import CheckboxForm from "@/components/CheckboxForm.astro";
 
 const { address } = Astro.params;
 
@@ -22,11 +17,35 @@ const properties = await getCollection("properties");
 const selectedProperty = properties.find(
   (c) => c.data.direccion == address,
 )?.data;
+
+import { sendEmail } from "@/server-islands/EmailHandler";
+import FormButton from "@/components/FormButton.astro";
+
+let success: boolean | null = null;
+
+if (Astro.request.method === "POST") {
+  const formData = await Astro.request.formData();
+  const name = formData.get("Nombre")?.toString() || "";
+  const email = formData.get("Email")?.toString() || "";
+  const phone = formData.get("Teléfono")?.toString() || "";
+  const details = formData.get("Detalles")?.toString() || "";
+
+  const result = await sendEmail({
+    name,
+    email,
+    phone,
+    details,
+  });
+
+  success = result.success;
+}
+
+export const prerender = false;
 ---
 
 <Layout>
-  <section class="flex md:flex-row flex-col p10">
-    <div class="w-2/3">
+  <section class="flex md:flex-row flex-col p10 gap-5">
+    <div class="w-[60%] max-md:w-full">
       <h1 class="text-3xl text-[var(--color-principal)]">
         {selectedProperty?.titulo}
       </h1>
@@ -114,7 +133,41 @@ const selectedProperty = properties.find(
         </BoxProperty>
       </section>
     </div>
-    <div></div>
-    {address}
+    <div
+      class="w-[35%] max-md:w-full bg-gray-300 flex flex-col p-4 items-center h-200"
+    >
+      <img
+        class="w-2/3"
+        src={img.src}
+        alt="Logo inmobiliaria toledo"
+        title="Logo acgabineteinmobiliario"
+        loading="lazy"
+        decoding="async"
+      />
+      <h1 class="text-[var(--color-principal)] text-xl">
+        Ac Gabinete Inmobiliario
+      </h1>
+      <form action="" method="POST" class="my-4">
+        <textarea
+          class="w-full"
+          name="detalles"
+          id="detalles"
+          placeholder="Hola, ¿podrían enviarme más información de este inmueble?"
+          rows="3"
+          cols="10"></textarea>
+
+        <InputForm labelName="Nombre" important={true} />
+        <InputForm labelName="Email" important={true} />
+        <InputForm labelName="Teléfono" important={true} />
+        <CheckboxForm
+          privacy="true"
+          text="Acepto que mis datos sean gestionados de acuerdo con los de la"
+        />
+        <CheckboxForm
+          text="Acepto de modo inequívoco recibir boletines, newsletter o comunicaciones comerciales de esta entidad."
+        />
+        <FormButton>Contacto</FormButton>
+      </form>
+    </div>
   </section>
 </Layout>

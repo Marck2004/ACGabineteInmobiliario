@@ -10,13 +10,13 @@ let success: boolean | null = null;
 
 if (Astro.request.method === "POST") {
     const formData = await Astro.request.formData();
-    const name = formData.get("Name")?.toString() || "";
-    const email = formData.get("Email")?.toString() || "";
-    const phone = formData.get("Phone")?.toString() || "";
-    const serviceType = formData.get("serviceType")?.toString() || "";
-    const details = formData.get("Detalles")?.toString() || "";
-
     console.log(formData);
+
+    const name = formData.get("Nombre")?.toString() || "";
+    const email = formData.get("Email")?.toString() || "";
+    const phone = formData.get("Telefono")?.toString() || "";
+    const serviceType = formData.get("TipoServicio")?.toString() || "";
+    const details = formData.get("Detalles")?.toString() || "";
 
     const result = await sendEmail({
         name,
@@ -29,16 +29,14 @@ if (Astro.request.method === "POST") {
 
     success = result.success;
 }
-
-export const prerender = true;
 ---
 
-<form method="POST" action="/contact">
-    <InputForm labelName="Name" important={true} />
+<form method="POST" action="">
+    <InputForm labelName="Nombre" important={true} />
     <InputForm labelName="Email" important={true} />
-    <InputForm labelName="Phone" important={true} />
+    <InputForm labelName="Telefono" important={true} />
     <div class="pb-5 w-full">
-        <SelectForm selectTitle="Tipo de servicio *" label="serviceType">
+        <SelectForm selectTitle="Tipo de servicio *" label="TipoServicio">
             <option value="search">Estoy buscando un inmueble</option>
             <option value="operation">Quiero vender/alquilar un inmueble</option
             >
@@ -53,7 +51,7 @@ export const prerender = true;
     <CheckboxForm
         text="Acepto de modo inequívoco recibir boletines, newsletter o comunicaciones comerciales de esta entidad."
     />
-    <FormButton children="Enviar" />
+    <FormButton>Enviar</FormButton>
     {success === true && <p>✅ ¡Correo enviado con éxito!</p>}
     {success === false && <p>❌ Hubo un error al enviar el correo.</p>}
 </form>

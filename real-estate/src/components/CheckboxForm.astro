@@ -8,7 +8,7 @@ const { text, privacy = false } = Astro.props;
         {text}
         {
             privacy ? (
-                <span class="text-blue-400 hover:underline">
+                <span class="text-[var(--color-principal)] hover:underline">
                     <a href="#">Política de Privacidad</a>
                 </span>
             <span> *</span>) : (

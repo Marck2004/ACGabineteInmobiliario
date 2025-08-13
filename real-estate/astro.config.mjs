@@ -9,7 +9,7 @@ import react from '@astrojs/react';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  output: 'static',
+  output: 'server',
 
   vite: {
     plugins: [tailwindcss()],
