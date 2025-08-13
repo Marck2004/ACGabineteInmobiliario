@@ -9,17 +9,17 @@ import BoxProperty from "@/components/BoxProperty.astro";
 import img from "@/assets/logo-landing.webp";
 import InputForm from "@/components/InputForm.astro";
 import CheckboxForm from "@/components/CheckboxForm.astro";
+import { sendEmail } from "@/server-islands/EmailHandler";
+import FormButton from "@/components/FormButton.astro";
+import TestingCarousel from "@/components/testingCarousel.astro";
 
 const { address } = Astro.params;
 
 const properties = await getCollection("properties");
 
 const selectedProperty = properties.find(
-  (c) => c.data.direccion == address,
+  (c) => c.data.direccion === address,
 )?.data;
-
-import { sendEmail } from "@/server-islands/EmailHandler";
-import FormButton from "@/components/FormButton.astro";
 
 let success: boolean | null = null;
 
@@ -39,81 +39,91 @@ if (Astro.request.method === "POST") {
 
   success = result.success;
 }
-
-export const prerender = false;
 ---
 
 <Layout>
-  <section class="flex md:flex-row flex-col p10 gap-5">
+  <section class="flex md:flex-row flex-col p-10 gap-5">
     <div class="w-[60%] max-md:w-full">
       <h1 class="text-3xl text-[var(--color-principal)]">
-        {selectedProperty?.titulo}
+        {selectedProperty?.titulo ?? "Sin título"}
       </h1>
-      <p class="text-[var(--color-gris)]">{selectedProperty?.direccion}</p>
+      <p class="text-[var(--color-gris)]">
+        {selectedProperty?.direccion ?? "Sin dirección"}
+      </p>
 
-      <img
-        src={selectedProperty!.imagenes[0]}
-        alt=`Foto piso propiedad acgabineteinmobiliario`
-        title=`Foto de propiedad en ${selectedProperty!.direccion}`
-        loading="lazy"
-        decoding="async"
-      />
+      <TestingCarousel images={selectedProperty?.imagenes} />
+
+      <!-- {
+        selectedProperty?.imagenes?.[0] && (
+          <img
+            src={selectedProperty.imagenes[0]}
+            alt={`Foto piso propiedad acgabineteinmobiliario`}
+            title={`Foto de propiedad en ${selectedProperty.direccion}`}
+            loading="lazy"
+            decoding="async"
+          />
+        )
+      } -->
+
       <section class="bg-gray-100 w-full border-2">
         <ol class="inline-flex gap-5 p-5">
           <li>
-            <span class="flex gap-2"
-              ><Buildings /> {selectedProperty?.tipo}</span
-            >
+            <span class="flex gap-2">
+              <Buildings />
+              {selectedProperty?.tipo ?? "-"}
+            </span>
           </li>
           <p>|</p>
           <li>
-            <span>{selectedProperty?.area} m2</span>
+            <span>{selectedProperty?.area ?? "-"} m2</span>
           </li>
           <p>|</p>
           <li>
-            <span class="flex gap-2"
-              ><Bed /> {selectedProperty?.caracteristicas.estancias}</span
-            >
+            <span class="flex gap-2">
+              <Bed />
+              {selectedProperty?.caracteristicas?.estancias ?? "-"}
+            </span>
           </li>
           <p>|</p>
           <li>
-            <span class="flex gap-2"
-              ><Shower />{selectedProperty?.caracteristicas.baños}</span
-            >
+            <span class="flex gap-2">
+              <Shower />
+              {selectedProperty?.caracteristicas?.baños ?? "-"}
+            </span>
           </li>
         </ol>
       </section>
-      <p class="prose my-5">
-        {selectedProperty?.descripcion}
-      </p>
+
+      <p class="prose my-5">{selectedProperty?.descripcion ?? ""}</p>
 
       <SectionTitle Children="Características inmueble" Color="red" />
       <div class="grid grid-cols-2 gap-5">
         <section class="flex flex-col gap-5">
           <BoxProperty>
-            Superficie: {selectedProperty?.area} m2
+            Superficie: {selectedProperty?.area ?? "-"} m2
           </BoxProperty>
           <BoxProperty>
-            Superficieparcela: {selectedProperty?.caracteristicas.areaDeParcela}
-            m2
+            Superficie parcela: {
+              selectedProperty?.caracteristicas?.areaDeParcela ?? "-"
+            } m2
           </BoxProperty>
           <BoxProperty>
             Precio venta / m2: {
-              selectedProperty?.caracteristicas.precioPormetro
+              selectedProperty?.caracteristicas?.precioPormetro ?? "-"
             } €
           </BoxProperty>
           <BoxProperty>
-            Plantas: {selectedProperty?.caracteristicas.estancias}
+            Plantas: {selectedProperty?.caracteristicas?.estancias ?? "-"}
           </BoxProperty>
           <BoxProperty>
-            Año de construccion: {
-              selectedProperty?.caracteristicas.añoConstruccion
+            Año de construcción: {
+              selectedProperty?.caracteristicas?.añoConstruccion ?? "-"
             }
           </BoxProperty>
         </section>
         <section class="flex flex-col gap-2">
           {
-            selectedProperty?.caracteristicas.extras.map((extra) => (
+            selectedProperty?.caracteristicas?.extras?.map((extra) => (
               <span class="bg-[var(--color-principal)] rounded-2xl p-2 text-white">
                 {extra}
               </span>
@@ -121,25 +131,29 @@ export const prerender = false;
           }
         </section>
       </div>
+
       <SectionTitle Children="Certificación energética" Color="red" />
       <section class="grid grid-cols-1 gap-5">
         <BoxProperty>
           Consumo energético: {
-            selectedProperty?.certificacionEnergetica.consumo
+            selectedProperty?.certificacionEnergetica?.consumo ?? "-"
           }
         </BoxProperty>
         <BoxProperty>
-          Emisión CO2: {selectedProperty?.certificacionEnergetica.emisionesCo2}
+          Emisión CO2: {
+            selectedProperty?.certificacionEnergetica?.emisionesCo2 ?? "-"
+          }
         </BoxProperty>
       </section>
     </div>
+
     <div
       class="w-[35%] max-md:w-full bg-gray-300 flex flex-col p-4 items-center h-200"
     >
       <img
         class="w-2/3"
         src={img.src}
-        alt="Logo inmobiliaria toledo"
+        alt="Logo inmobiliaria Toledo"
         title="Logo acgabineteinmobiliario"
         loading="lazy"
         decoding="async"
@@ -147,6 +161,7 @@ export const prerender = false;
       <h1 class="text-[var(--color-principal)] text-xl">
         Ac Gabinete Inmobiliario
       </h1>
+
       <form action="" method="POST" class="my-4">
         <textarea
           class="w-full"
@@ -168,6 +183,8 @@ export const prerender = false;
         />
         <FormButton>Contacto</FormButton>
       </form>
+      {success === true && <p>✅ ¡Correo enviado con éxito!</p>}
+      {success === false && <p>❌ Hubo un error al enviar el correo.</p>}
     </div>
   </section>
 </Layout>

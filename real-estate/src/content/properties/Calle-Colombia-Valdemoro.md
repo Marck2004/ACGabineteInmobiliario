@@ -24,6 +24,9 @@ direccion: "Calle Colombia, Valdemoro"
 videos:
 imagenes:
   - "/ImgProperties/Calle-Colombia-Valdemoro/ColombiaImg.jpg"
+  - "/ImgProperties/Calle-Colombia-Valdemoro/ColombiaImg.jpg"
+  - "/ImgProperties/Calle-Colombia-Valdemoro/ColombiaImg.jpg"
+
 caracteristicas:
   extras:
     - "Garaje individual"

@@ -10,7 +10,6 @@ let success: boolean | null = null;
 
 if (Astro.request.method === "POST") {
     const formData = await Astro.request.formData();
-    console.log(formData);
 
     const name = formData.get("Nombre")?.toString() || "";
     const email = formData.get("Email")?.toString() || "";
@@ -25,7 +24,6 @@ if (Astro.request.method === "POST") {
         serviceType,
         details,
     });
-    console.log(result);
 
     success = result.success;
 }
