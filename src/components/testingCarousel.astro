@@ -1,0 +1,27 @@
+---
+const { images } = Astro.props;
+---
+
+<div class="carousel w-full my-5">
+    {
+        images
+            ? images.map((image: string, index: number) => (
+                  <div id={`item${index}`} class="carousel-item w-full">
+                      <img src={image} class="w-full" />
+                  </div>
+              ))
+            : ""
+    }
+</div>
+<div class="flex w-full justify-center gap-2 py-2">
+    {
+        images
+            ? images.map((index: number) => (
+                  <a
+                      href={`#item${index}`}
+                      class="rounded-full bg-[var(--color-principal)] w-4 h-4"
+                  />
+              ))
+            : ""
+    }
+</div>
