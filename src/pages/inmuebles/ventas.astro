@@ -6,7 +6,10 @@ import { getCollection } from "astro:content";
 const properties = await getCollection("properties");
 ---
 
-<Layout>
+<Layout
+    title="Propiedades en venta"
+    description="Conoce todas las propiedades que tenemos en venta"
+>
     <div class="p10 container mx-auto">
         <FilterParent properties={properties} client:load />
     </div>

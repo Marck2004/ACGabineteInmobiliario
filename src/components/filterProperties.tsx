@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type { FeaturesInterface, PropertiesInterface } from "@/interfaces/PropertiesInterface";
 import logo from '@/assets/logo-landing.webp';
 
@@ -69,7 +69,7 @@ export const FilterProperties: React.FC<interfaceFilterProperties> = ({ properti
         <div className="md:w-2/3 w-full align-bottom">
             {
                 filterProperties.length > 0 ? filterProperties.map((property) => (
-                    <div key={property.direccion} className="border-2 rounded-2xl flex flex-col gap-5 p-5 md:flex-row transition"
+                    <div key={property.direccion} className="cursor-pointer border-2 rounded-2xl flex flex-col gap-5 p-5 md:flex-row transition"
                         onClick={() => window.location.href = `/${property.direccion}`}>
                         <img
                             src={property.imagenes[0]}

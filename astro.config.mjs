@@ -6,6 +6,8 @@ import tailwindcss from "@tailwindcss/vite";
 
 import react from '@astrojs/react';
 
+import sitemap from '@astrojs/sitemap';
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
@@ -19,5 +21,6 @@ export default defineConfig({
       }
     }
   },
-  integrations: [react()],
+  site: 'https://www.acgabineteinmobiliario.es',
+  integrations: [react(), sitemap()],
 });

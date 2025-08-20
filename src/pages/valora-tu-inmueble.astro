@@ -4,10 +4,12 @@ import FormButton from "@/components/FormButton.astro";
 import InputForm from "@/components/InputForm.astro";
 import SelectForm from "@/components/SelectForm.astro";
 import Layout from "@/layouts/Layout.astro";
-
 ---
 
-<Layout>
+<Layout
+    title="Valora tu inmueble"
+    description="Valora tu inmueble con ACGabinete inmobiliario"
+>
     <section class="container mx-auto p-10">
         <div>
             <h1 class="text-4xl">Valora tu inmueble</h1>
@@ -59,7 +61,7 @@ import Layout from "@/layouts/Layout.astro";
                 </section>
                 <section class="inline-flex w-full gap-5">
                     <InputForm labelName="Calle" important="true" />
-                    <label for="Nombre" class=" pb-5 w-1/2 relative">
+                    <label for="Nombre" class="pb-5 w-1/2 relative">
                         Superficie *
                         <input
                             type="text"

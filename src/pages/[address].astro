@@ -13,13 +13,18 @@ import { sendEmail } from "@/server-islands/EmailHandler";
 import FormButton from "@/components/FormButton.astro";
 import TestingCarousel from "@/components/testingCarousel.astro";
 
-const { address } = Astro.params;
+let { address } = Astro.params;
 
 const properties = await getCollection("properties");
 
 const selectedProperty = properties.find(
   (c) => c.data.direccion === address,
 )?.data;
+
+const deconstructProperty = {
+  imagen: selectedProperty!.imagenes[0] ?? "default",
+  direccion: selectedProperty!.direccion ?? "sin direccion",
+};
 
 let success: boolean | null = null;
 
@@ -51,19 +56,7 @@ if (Astro.request.method === "POST") {
         {selectedProperty?.direccion ?? "Sin dirección"}
       </p>
 
-      <TestingCarousel images={selectedProperty?.imagenes} />
-
-      <!-- {
-        selectedProperty?.imagenes?.[0] && (
-          <img
-            src={selectedProperty.imagenes[0]}
-            alt={`Foto piso propiedad acgabineteinmobiliario`}
-            title={`Foto de propiedad en ${selectedProperty.direccion}`}
-            loading="lazy"
-            decoding="async"
-          />
-        )
-      } -->
+      <TestingCarousel propertiesAttribute={[deconstructProperty]} />
 
       <section class="bg-gray-100 w-full border-2">
         <ol class="inline-flex gap-5 p-5">
@@ -123,7 +116,7 @@ if (Astro.request.method === "POST") {
         </section>
         <section class="flex flex-col gap-2">
           {
-            selectedProperty?.caracteristicas?.extras?.map((extra) => (
+            selectedProperty?.caracteristicas?.extras?.map((extra: string) => (
               <span class="bg-[var(--color-principal)] rounded-2xl p-2 text-white">
                 {extra}
               </span>
@@ -164,9 +157,9 @@ if (Astro.request.method === "POST") {
 
       <form action="" method="POST" class="my-4">
         <textarea
-          class="w-full"
-          name="detalles"
-          id="detalles"
+          class="w-full p-2"
+          name="Detalles"
+          id="Detalles"
           placeholder="Hola, ¿podrían enviarme más información de este inmueble?"
           rows="3"
           cols="10"></textarea>
