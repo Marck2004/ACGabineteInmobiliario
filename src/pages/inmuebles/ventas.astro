@@ -3,7 +3,25 @@ import { FilterParent } from "@/components/filterParent";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
-const properties = await getCollection("properties");
+let properties;
+
+if (Astro.url.searchParams.size == 0) {
+    properties = await getCollection("properties");
+} else {
+    const search = Astro.url.searchParams.get("busqueda");
+    const type = Astro.url.searchParams.get("propiedad");
+    console.log(search);
+
+    properties = await getCollection("properties").then((c) =>
+        c.filter((x) => {
+            const matchesType = type ? x.data.tipo == type : true;
+            const matchesSearch = search
+                ? x.data.titulo.toLowerCase().includes(search.toLowerCase())
+                : true;
+            return matchesType && matchesSearch;
+        }),
+    );
+}
 ---
 
 <Layout

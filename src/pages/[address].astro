@@ -11,7 +11,8 @@ import InputForm from "@/components/InputForm.astro";
 import CheckboxForm from "@/components/CheckboxForm.astro";
 import { sendEmail } from "@/server-islands/EmailHandler";
 import FormButton from "@/components/FormButton.astro";
-import TestingCarousel from "@/components/testingCarousel.astro";
+import PropertyCarousel from "@/components/PropertyCarousel.astro";
+import Surface from "@/assets/svg/Surface.astro";
 
 let { address } = Astro.params;
 
@@ -22,8 +23,8 @@ const selectedProperty = properties.find(
 )?.data;
 
 const deconstructProperty = {
-  imagen: selectedProperty!.imagenes[0] ?? "default",
-  direccion: selectedProperty!.direccion ?? "sin direccion",
+  imagen: selectedProperty?.imagenes ?? "default",
+  direccion: selectedProperty?.direccion ?? "sin direccion",
 };
 
 let success: boolean | null = null;
@@ -56,29 +57,31 @@ if (Astro.request.method === "POST") {
         {selectedProperty?.direccion ?? "Sin dirección"}
       </p>
 
-      <TestingCarousel propertiesAttribute={[deconstructProperty]} />
+      <PropertyCarousel propertiesAttribute={[deconstructProperty]} />
 
       <section class="bg-gray-100 w-full border-2">
-        <ol class="inline-flex gap-5 p-5">
+        <ol class="sm:inline-flex gap-5 p-5">
           <li>
             <span class="flex gap-2">
               <Buildings />
               {selectedProperty?.tipo ?? "-"}
             </span>
           </li>
-          <p>|</p>
-          <li>
-            <span>{selectedProperty?.area ?? "-"} m2</span>
+          <p class="sm:inline-flex hidden">|</p>
+          <li class="max-sm:mt-4 flex">
+            <Surface />
+            <span>{selectedProperty?.caracteristicas.superficie ?? "-"} m2</span
+            >
           </li>
-          <p>|</p>
-          <li>
+          <p class="sm:inline-flex hidden">|</p>
+          <li class="max-sm:mt-4">
             <span class="flex gap-2">
               <Bed />
               {selectedProperty?.caracteristicas?.estancias ?? "-"}
             </span>
           </li>
-          <p>|</p>
-          <li>
+          <p class="sm:inline-flex hidden">|</p>
+          <li class="max-sm:mt-4">
             <span class="flex gap-2">
               <Shower />
               {selectedProperty?.caracteristicas?.baños ?? "-"}
@@ -93,7 +96,7 @@ if (Astro.request.method === "POST") {
       <div class="grid grid-cols-2 gap-5">
         <section class="flex flex-col gap-5">
           <BoxProperty>
-            Superficie: {selectedProperty?.area ?? "-"} m2
+            Superficie: {selectedProperty?.caracteristicas.superficie ?? "-"} m2
           </BoxProperty>
           <BoxProperty>
             Superficie parcela: {

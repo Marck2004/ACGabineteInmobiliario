@@ -1,42 +1,32 @@
 ---
-import AngleLeft from "@/assets/svg/Angle-left.astro";
-import AngleRight from "@/assets/svg/Angle-right.astro";
-import { getCollection } from "astro:content";
-import SectionTitle from "./SectionTitle.astro";
-
-const properties = await getCollection("properties");
+const { propertiesAttribute } = Astro.props;
 ---
 
-<div class="relative p-12" id="inmuebles">
-    <SectionTitle Children="Inmuebles" />
-    <div class="carousel-item gap-5 w-full flex justify-center">
-        {
-            properties.map((property) => (
-                <section class="group max-lg:w-[90%] w-1/3 z-10 transform transition-all hover:scale-105 relative">
-                    <div class="absolute bg-[#c22a24] left-0 rounded-r-lg pl-5 mt-5 py-2 px-4">
-                        <p class="text-white items-center text-xl">En venta</p>
-                        <p class="font-bold text-xl text-white">
-                            {property.data.caracteristicas.precio}
-                        </p>
-                    </div>
-                    <a href={property.slug}>
-                        <img
-                            src={property.data.imagenes[0]}
-                            class="rounded-2xl shadow-2xl shadow-inherit object-cover"
-                        />
-                    </a>
-                    <h3 class="font-bold p-3">
-                        <a href="#">{property.data.titulo}</a>
-                    </h3>
-                </section>
-            ))
-        }
-        <div
-            class="absolute top-1/2 flex
-                transform justify-between z-10 w-[95%]"
-        >
-            <a href="#slide4"><AngleLeft /></a>
-            <a href="#slide2"><AngleRight /></a>
-        </div>
-    </div>
+<div class="carousel w-full my-5">
+    {
+        propertiesAttribute?.map((propertyAttribute: any, index: number) => (
+            <div id={`item${index}`} class="carousel-item w-full flex-col">
+                <a href={propertyAttribute.direccion}>
+                    <img
+                        src={propertyAttribute.imagen}
+                        class="w-full object-cover h-[500px]"
+                    />
+                </a>
+                <h2 class="text-2xl text-center m-5">
+                    {propertyAttribute.direccion}
+                </h2>
+            </div>
+        ))
+    }
+</div>
+
+<div class="flex w-full justify-center gap-2 py-2">
+    {
+        propertiesAttribute?.map((_: any, index: number) => (
+            <button
+                class="rounded-full bg-[var(--color-principal)] w-4 h-4 cursor-pointer"
+                onclick={`${`document.getElementById('item${index}').scrollIntoView({ block: 'nearest', inline: 'center' })`}`}
+            />
+        ))
+    }
 </div>

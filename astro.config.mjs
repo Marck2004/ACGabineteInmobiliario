@@ -3,16 +3,15 @@ import { defineConfig } from "astro/config";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import tailwindcss from "@tailwindcss/vite";
-
+import cloudflare from '@astrojs/cloudflare';
 import react from '@astrojs/react';
-
 import sitemap from '@astrojs/sitemap';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   output: 'server',
-
+  adapter: cloudflare(),
   vite: {
     plugins: [tailwindcss()],
     resolve: {
@@ -21,6 +20,6 @@ export default defineConfig({
       }
     }
   },
-  site: 'https://www.acgabineteinmobiliario.es',
+  site: 'http://localhost:4321',
   integrations: [react(), sitemap()],
 });

@@ -4,7 +4,6 @@ const properties = defineCollection({
     schema: z.object({
         titulo: z.string(),
         descripcion: z.string(),
-        area: z.number(),
         tipo: z.string(),
         referencia: z.string(),
         direccion: z.string(),

@@ -1,0 +1,35 @@
+---
+const { propertiesAttribute } = Astro.props;
+const selectedProperty = propertiesAttribute[0];
+---
+
+<div class="carousel w-full my-5">
+    {
+        selectedProperty &&
+            selectedProperty.imagen.map(
+                (propertyAttribute: any, index: number) => (
+                    <div
+                        id={`item${index}`}
+                        class="carousel-item w-full flex-col"
+                    >
+                        <img
+                            src={propertyAttribute}
+                            class="w-full object-cover h-[500px]"
+                        />
+                    </div>
+                ),
+            )
+    }
+</div>
+<div class="flex w-full justify-center gap-2 py-2">
+    {
+        selectedProperty
+            ? selectedProperty.imagen.map((_: string, index: number) => (
+                  <button
+                      class="rounded-full bg-[var(--color-principal)] w-4 h-4 cursor-pointer"
+                      onclick={`${`document.getElementById('item${index}').scrollIntoView({ block: 'nearest', inline: 'center' })`}`}
+                  />
+              ))
+            : ""
+    }
+</div>

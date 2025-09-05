@@ -1,12 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import bgImg from "@/assets/logo-landing.webp";
-import PropertiesCarousel from "@/components/PropertiesCarousel.astro";
 import CompanyDescription from "@/components/CompanyDescription.astro";
 import { getCollection } from "astro:content";
-import TestingCarousel from "@/components/testingCarousel.astro";
 import bgImage from "@/assets/bgImage.jpg";
 import SectionTitle from "@/components/SectionTitle.astro";
+import PropertiesCarousel from "@/components/PropertiesCarousel.astro";
 
 const properties = await getCollection("properties");
 ---
@@ -51,8 +50,8 @@ const properties = await getCollection("properties");
             class="w-full relative flex flex-col md:justify-center md:items-center"
           >
             <form
-              action=""
-              method="post"
+              action="inmuebles/ventas"
+              method="get"
               class="p-8 bg-black/50 w-full rounded-lg"
             >
               <div class="flex justify-between gap-5">
@@ -62,11 +61,12 @@ const properties = await getCollection("properties");
                 >
                 <select
                   class="group focus:border-[#c22a24] focus:text-[#c22a24] bg-white order-last w-[25%] font-bold border-2 rounded-md"
+                  name="propiedad"
                 >
-                  <option value="Alojamiento" class="group-focus:text-black"
+                  <option value="Casa / Chalet" class="group-focus:text-black"
                     >Alojamiento</option
                   >
-                  <option value="Industrial" class="group-focus:text-black"
+                  <option value="Nave industrial" class="group-focus:text-black"
                     >Industrial</option
                   >
                 </select>
@@ -74,7 +74,7 @@ const properties = await getCollection("properties");
               <div class="flex flex-col">
                 <input
                   type="text"
-                  name=""
+                  name="busqueda"
                   placeholder="¿Qué estas buscando?"
                   class="focus:border-red-600 w-full my-5 bg-white rounded-md border-2"
                 />
@@ -91,7 +91,7 @@ const properties = await getCollection("properties");
     </div>
     <section class="w-1/2 mx-auto my-8">
       <SectionTitle Color="black" Children=`Inmuebles` />
-      <TestingCarousel
+      <PropertiesCarousel
         propertiesAttribute={properties.map((property) => {
           return {
             imagen: property.data.imagenes[0] ?? "default",
@@ -101,7 +101,6 @@ const properties = await getCollection("properties");
         redirect={true}
       />
     </section>
-    <!-- <PropertiesCarousel /> -->
     <CompanyDescription />
   </div>
 </Layout>
