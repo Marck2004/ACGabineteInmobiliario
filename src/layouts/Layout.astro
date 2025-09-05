@@ -28,6 +28,17 @@ const { title, description, image } = Astro.props;
       import "vanilla-cookieconsent/dist/cookieconsent.css";
       run(config);
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH4F0GEKNW"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-QH4F0GEKNW");
+    </script>
   </head>
 
   <body class="body">
