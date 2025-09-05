@@ -1,0 +1,14 @@
+---
+
+---
+
+<button type="button" data-cc="show-preferencesModal" class="cursor-pointer"
+    >Preferencias de cookies</button
+>
+
+<script>
+    import { run } from "vanilla-cookieconsent";
+    import { config } from "@/utils/cookieconsent-config";
+    import "vanilla-cookieconsent/dist/cookieconsent.css";
+    run(config);
+</script>

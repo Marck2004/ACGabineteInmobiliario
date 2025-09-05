@@ -9,7 +9,6 @@ export const footerConsts: footerItemsInterface[] = [
 			{ name: "Política de privacidad", url: "/Política_de_privacidad" },
 			{ name: "Aviso legal", url: "/Aviso_legal" },
 			{ name: "Política de cookies", url: "/Política_de_cookies" },
-			{ name: "Preferencias de cookies", isModal: true },
 		],
 	},
 	{

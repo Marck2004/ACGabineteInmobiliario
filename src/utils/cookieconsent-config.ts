@@ -68,7 +68,7 @@ export const config: CookieConsentConfig = {
           title: 'Configurar preferencias de Cookies',
           acceptAllBtn: 'Aceptar todas',
           acceptNecessaryBtn: 'Rechazar todas',
-          savePreferencesBtn: 'Configurar preferencias',
+
           closeIconLabel: 'Cerrar modal',
           sections: [
             {

@@ -4,6 +4,7 @@ import Instagram from "@/assets/svg/Instagram.astro";
 import X from "@/assets/svg/X.astro";
 import { footerConsts } from "@/consts/FooterConsts";
 import type { footerItemsInterface } from "@/interfaces/FooterItemsInterface";
+import CookieConsent from "./CookieConsent.astro";
 ---
 
 <footer
@@ -23,14 +24,12 @@ import type { footerItemsInterface } from "@/interfaces/FooterItemsInterface";
                 <a
                   class="cursor-pointer"
                   {...(child.url ? { href: child.url } : {})}
-                  {...(child.isModal
-                    ? { "data-cc": "show-preferencesModal" }
-                    : {})}
                 >
                   {child.name}
                 </a>
               </li>
             ))}
+            <CookieConsent />
           </ol>
         </div>
       ))
@@ -63,16 +62,3 @@ import type { footerItemsInterface } from "@/interfaces/FooterItemsInterface";
     </div>
   </div>
 </footer>
-
-<script is:inline>
-  function handleOpenCookiesModal() {
-    let modalId = document.getElementById("Preferencias-de-cookies");
-    if (modalId.classList.contains("flex")) {
-      modalId.classList.add("none");
-      modalId.classList.remove("flex");
-    } else {
-      modalId.classList.add("flex");
-      modalId.classList.remove("none");
-    }
-  }
-</script>
