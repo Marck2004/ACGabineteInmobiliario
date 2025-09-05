@@ -111,7 +111,7 @@ export const config: CookieConsentConfig = {
               linkedCategory: 'functionality',
             },
             {
-              title: 'Cookies de analíticas',
+              title: 'Cookies analíticas',
               description:
                 'Estas cookies nos permiten cuantificar el número de visitas y fuentes de tráfico para poder evaluar el rendimiento de nuestro sitio y mejorarlo. Nos ayudan a saber qué páginas son las más o las menos visitadas y de qué manera los visitantes navegan por el sitio.',
               linkedCategory: 'analytics',
