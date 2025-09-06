@@ -10,9 +10,7 @@ import CookieConsent from "./CookieConsent.astro";
 <footer
   class="bg-gray-100 shadow-inner border-t border-zinc-300 bottom-0 w-full mt-0 z-10"
 >
-  <div
-    class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-12 grid sm:grid-cols-4"
-  >
+  <div class="mx-auto w-full max-w-screen-xl p-4 lg:py-4 grid sm:grid-cols-4">
     {
       footerConsts.map((item: footerItemsInterface) => (
         <div class="p-2">
@@ -29,7 +27,7 @@ import CookieConsent from "./CookieConsent.astro";
                 </a>
               </li>
             ))}
-            <CookieConsent />
+            {item.title == "Legal" ? <CookieConsent /> : ""}
           </ol>
         </div>
       ))
@@ -60,5 +58,19 @@ import CookieConsent from "./CookieConsent.astro";
         </span>
       </div>
     </div>
+  </div>
+  <div
+    class="bg-gray-800 border-t border-gray-700 text-center py-4 flex justify-center items-center text-gray-300 text-base"
+  >
+    <p>
+      Desarrollado por
+      <a
+        href="https://www.linkedin.com/in/marcoscobo2004/"
+        target="_blank"
+        class="font-bold underline hover:text-white transition-colors"
+      >
+        Marcos Cobo
+      </a>
+    </p>
   </div>
 </footer>
