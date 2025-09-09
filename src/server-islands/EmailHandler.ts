@@ -34,13 +34,13 @@ export async function sendEmail(data: {
 
 	const mailOptions = {
 		from: data.email,
-		to: import.meta.env.EMAIL_USER,
+		to: process.env.EMAIL_USER,
 		subject: `Nuevo mensaje de ${data.name}`,
 		html: htmlContent,
 		attachments: [
 			{
 				filename: "logo-landing.webp",
-				path: "./src/assets/logo-landing.webp",
+				path: "@/assets/logo-landing.webp",
 				cid: "logo-landing",
 			},
 		],
