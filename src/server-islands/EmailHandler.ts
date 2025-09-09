@@ -17,7 +17,7 @@ export async function sendEmail(data: {
 			pass: process.env.EMAIL_PASS,
 		},
 	});
-	const logoPath = path.resolve("./public/images/logo-landing.webp");
+	const logoPath = path.resolve("./public/logo-landing.webp");
 
 	const htmlContent = `
   <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
