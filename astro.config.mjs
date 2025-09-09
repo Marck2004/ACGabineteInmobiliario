@@ -6,12 +6,17 @@ import tailwindcss from "@tailwindcss/vite";
 import cloudflare from '@astrojs/cloudflare';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   output: 'server',
-  adapter: cloudflare(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true
+    }
+  }),
   vite: {
     plugins: [tailwindcss()],
     resolve: {

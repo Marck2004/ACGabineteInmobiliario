@@ -12,6 +12,7 @@
 		"@astrojs/cloudflare": "^12.6.4",
 		"@astrojs/react": "^4.3.0",
 		"@astrojs/sitemap": "^3.5.0",
+		"@astrojs/vercel": "^8.2.7",
 		"@tailwindcss/line-clamp": "^0.4.4",
 		"@tailwindcss/vite": "^4.0.17",
 		"@types/react": "^19.1.8",
