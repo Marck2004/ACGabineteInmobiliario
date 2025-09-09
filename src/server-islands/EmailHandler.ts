@@ -1,6 +1,5 @@
 import nodemailer from "nodemailer";
 import path from "path";
-import { fileURLToPath } from "url";
 
 export async function sendEmail(data: {
 	name: string;
@@ -11,7 +10,9 @@ export async function sendEmail(data: {
 }) {
 
 	const transporter = nodemailer.createTransport({
-		service: "gmail",
+		host: "smtp.qboxmail.com",
+		port: 587,
+		secure: false,
 		auth: {
 			user: process.env.EMAIL_USER,
 			pass: process.env.EMAIL_PASS,
@@ -36,8 +37,9 @@ export async function sendEmail(data: {
   `;
 
 	const mailOptions = {
-		from: data.email,
+		from: process.env.EMAIL_USER,
 		to: process.env.EMAIL_USER,
+		replyTo: data.email,
 		subject: `Nuevo mensaje de ${data.name}`,
 		html: htmlContent,
 		attachments: [
