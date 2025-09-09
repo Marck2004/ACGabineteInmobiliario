@@ -7,11 +7,12 @@ export async function sendEmail(data: {
 	serviceType?: string;
 	details?: string;
 }) {
+
 	const transporter = nodemailer.createTransport({
 		service: "gmail",
 		auth: {
-			user: import.meta.env.EMAIL_USER,
-			pass: import.meta.env.EMAIL_PASS,
+			user: process.env.EMAIL_USER,
+			pass: process.env.EMAIL_PASS,
 		},
 	});
 
