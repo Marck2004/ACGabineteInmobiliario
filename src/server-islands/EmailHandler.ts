@@ -1,4 +1,6 @@
 import nodemailer from "nodemailer";
+import path from "path";
+import { fileURLToPath } from "url";
 
 export async function sendEmail(data: {
 	name: string;
@@ -15,6 +17,7 @@ export async function sendEmail(data: {
 			pass: process.env.EMAIL_PASS,
 		},
 	});
+const logoPath = path.resolve(fileURLToPath(new URL("../assets/logo-landing.webp", import.meta.url)));
 
 	const htmlContent = `
   <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
@@ -40,7 +43,7 @@ export async function sendEmail(data: {
 		attachments: [
 			{
 				filename: "logo-landing.webp",
-				path: "@/assets/logo-landing.webp",
+				path: logoPath,
 				cid: "logo-landing",
 			},
 		],
