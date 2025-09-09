@@ -25,6 +25,6 @@ export default defineConfig({
       }
     }
   },
-  site: 'http://localhost:4321',
+  site: 'https://www.acgabineteinmobiliario.es',
   integrations: [react(), sitemap()],
 });
