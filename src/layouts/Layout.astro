@@ -5,22 +5,42 @@ import Navbar from "@/components/Navbar.astro";
 import "@/styles/global.css";
 import { ClientRouter } from "astro:transitions";
 
-const { title, description, image } = Astro.props;
+const {
+  title = "AC Gabinete Inmobiliario - Inmobiliaria en Toledo",
+  description = "Compra, venta y alquiler de inmuebles en Toledo. Asesoramiento profesional y amplio catálogo de propiedades.",
+  image = "https://www.acgabineteinmobiliario.es/logo-landing.webp",
+  url = Astro.url.href,
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <!-- SEO Básico -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={url} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
     <ClientRouter />
     <script>
       import { run } from "vanilla-cookieconsent";

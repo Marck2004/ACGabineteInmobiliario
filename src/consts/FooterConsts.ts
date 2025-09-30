@@ -6,9 +6,9 @@ export const footerConsts: footerItemsInterface[] = [
 	{
 		title: "Legal",
 		childs: [
-			{ name: "Política de privacidad", url: "/Política_de_privacidad" },
-			{ name: "Aviso legal", url: "/Aviso_legal" },
-			{ name: "Política de cookies", url: "/Política_de_cookies" },
+			{ name: "Política de privacidad", url: "/politica-de-privacidad" },
+			{ name: "Aviso legal", url: "/aviso-legal" },
+			{ name: "Política de cookies", url: "/politica-de-cookies" },
 		],
 	},
 	{
